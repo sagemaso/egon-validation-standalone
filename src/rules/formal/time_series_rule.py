@@ -3,6 +3,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 from sshtunnel import SSHTunnelForwarder
 from dotenv import load_dotenv
+from typing import Optional
 
 from src.rules.base_rule import BaseValidationRule
 from src.core.validation_result import ValidationResult
@@ -17,7 +18,7 @@ class TimeSeriesValidationRule(BaseValidationRule):
         super().__init__("time_series_completeness")
 
     def validate(self, table: str, column: str, expected_length: int,
-                 scenario: str = "eGon2035") -> ValidationResult:
+                 scenario: Optional[str] = None) -> ValidationResult:
         """
         Validates that time series arrays have the expected length
 
@@ -37,13 +38,17 @@ class TimeSeriesValidationRule(BaseValidationRule):
             with self._get_ssh_tunnel() as tunnel:
                 engine = self._get_database_connection()
 
+                where_clause = ""
+                if scenario:
+                    where_clause = f"WHERE scn_name = '{scenario}'"
+
                 query = f"""
                 SELECT 
                     COUNT(*) as total_rows,
                     COUNT(CASE WHEN cardinality({column}) = {expected_length} THEN 1 END) as correct_length,
                     COUNT(CASE WHEN cardinality({column}) != {expected_length} THEN 1 END) as wrong_length
                 FROM {table}
-                WHERE scn_name = '{scenario}'
+                {where_clause}
                 LIMIT 1000
                 """
 

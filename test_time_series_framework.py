@@ -20,7 +20,6 @@ def test_time_series_validation():
         table="grid.egon_etrago_load_timeseries",
         column="p_set",
         expected_length=8760,
-        scenario="eGon2035"
     )
 
     # Print results
