@@ -109,14 +109,27 @@ class BatchValidationRule(BaseValidationRule):
 
         Must be implemented by subclasses (NullCheckRule, NaNCheckRule, etc.)
 
+        Parameters:
+        -----------
+        engine : SQLAlchemy Engine
+            Database connection
+        table : str
+            Table name
+        column : str
+            Column name
+        scenario : str, optional
+            Scenario filter
+
         Returns:
         --------
-        Dict with keys: "status", "rows_checked", "invalid_count", "details"
+        Dict with keys: "status", "total_rows", "invalid_count", "details", etc.
         """
         pass
 
+    # TODO: Diese DB-Verbindungsmethoden werden später durch zentrale
+    # Datenbankverbindung ersetzt
     def _get_ssh_tunnel(self):
-        """Creates SSH tunnel context manager"""
+        """Creates SSH tunnel context manager - TEMPORARY"""
         ssh_config = {
             'host': os.getenv("SSH_HOST"),
             'user': os.getenv("SSH_USER"),
@@ -134,7 +147,7 @@ class BatchValidationRule(BaseValidationRule):
         )
 
     def _get_database_connection(self):
-        """Creates database engine"""
+        """Creates database engine - TEMPORARY"""
         db_config = {
             'host': os.getenv("DB_HOST"),
             'port': int(os.getenv("DB_PORT")),
