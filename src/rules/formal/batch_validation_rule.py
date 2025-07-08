@@ -1,40 +1,21 @@
-import os
 from abc import abstractmethod
 from typing import List, Dict, Any
-import pandas as pd
-from sqlalchemy import create_engine
-from sshtunnel import SSHTunnelForwarder
-from dotenv import load_dotenv
 
 from src.rules.base_rule import BaseValidationRule
 from src.core.validation_result import ValidationResult
-
-load_dotenv()
+from src.core.database_manager import DatabaseManager
 
 
 class BatchValidationRule(BaseValidationRule):
     """Base class for validation rules that can check multiple tables/columns"""
 
-    def __init__(self, rule_name: str):
+    def __init__(self, rule_name: str, db_manager: DatabaseManager = None):
         super().__init__(rule_name)
+        self.db_manager = db_manager or DatabaseManager()
 
-    def validate(self, table_column_configs: List[Dict[str, str]]) -> ValidationResult:
+    def validate(self, table_column_configs: List[Dict[str, Any]]) -> ValidationResult:
         """
-        Validates multiple table/column combinations
-
-        Parameters:
-        -----------
-        table_column_configs : List[Dict]
-            List of configurations like:
-            [
-                {"table": "demand.egon_demandregio_hh", "column": "demand"},
-                {"table": "supply.egon_power_plants", "column": "capacity"}
-            ]
-
-        Returns:
-        --------
-        ValidationResult
-            Single result summarizing all validations
+        Validates multiple table/column combinations with detailed logging
         """
 
         all_results = []
@@ -43,21 +24,43 @@ class BatchValidationRule(BaseValidationRule):
         failed_tables = []
         summary = {}
 
-        try:
-            with self._get_ssh_tunnel() as tunnel:
-                engine = self._get_database_connection()
+        # Add detailed logging
+        print(f"\n🔍 Starting {self.rule_name} validation for {total_count} table/column combinations:")
 
-                for config in table_column_configs:
+        try:
+            with self.db_manager.connection_context() as engine:
+
+                for i, config in enumerate(table_column_configs, 1):
                     table = config["table"]
                     column = config["column"]
-                    scenario = config.get("scenario")  # Optional
 
-                    # Call the specific validation method (implemented by subclasses)
+                    print(f"\n   📋 [{i}/{total_count}] Validating: {table}.{column}")
+
+                    # Show expected parameters if available
+                    if "expected_length" in config:
+                        print(f"      Expected length: {config['expected_length']}")
+
+                    # Pass the entire config to _validate_single_column
                     single_result = self._validate_single_column(
-                        engine, table, column, scenario
+                        engine, table, column, **{k: v for k, v in config.items()
+                                                  if k not in ["table", "column"]}
                     )
 
                     all_results.append(single_result)
+
+                    # Detailed logging for each result
+                    if single_result["status"] == "SUCCESS":
+                        print(f"      ✅ SUCCESS: {single_result.get('details', 'Validation passed')}")
+                    else:
+                        print(f"      ❌ FAILED: {single_result.get('details', 'Validation failed')}")
+                        if single_result.get('expected_length'):
+                            print(f"         Expected length: {single_result['expected_length']}")
+                        if single_result.get('found_lengths'):
+                            print(f"         Found lengths: {single_result['found_lengths']}")
+                        if single_result.get('wrong_length'):
+                            print(f"         Rows with wrong length: {single_result['wrong_length']}")
+                        if single_result.get('total_rows'):
+                            print(f"         Total rows checked: {single_result['total_rows']}")
 
                     # Track results for summary
                     key = f"{table}.{column}"
@@ -67,10 +70,21 @@ class BatchValidationRule(BaseValidationRule):
                         failed_count += 1
                         failed_tables.append(key)
 
+                # Summary logging
+                print(f"\n📊 {self.rule_name} Summary:")
+                print(f"   Total validations: {total_count}")
+                print(f"   Passed: {total_count - failed_count}")
+                print(f"   Failed: {failed_count}")
+
+                if failed_tables:
+                    print(f"   Failed tables/columns:")
+                    for failed_table in failed_tables:
+                        print(f"      ❌ {failed_table}")
+
                 # Create summary ValidationResult
                 if failed_count > 0:
                     status = "CRITICAL_FAILURE"
-                    error_details = f"{failed_count} of {total_count} validations failed"
+                    error_details = f"{failed_count} of {total_count} validations failed: {', '.join(failed_tables)}"
                     message = None
                 else:
                     status = "SUCCESS"
@@ -96,18 +110,18 @@ class BatchValidationRule(BaseValidationRule):
                 )
 
         except Exception as e:
+            print(f"❌ Batch validation execution failed: {str(e)}")
             return self._create_failure_result(
                 table="multiple_tables",
                 error_details=f"Batch validation execution failed: {str(e)}"
             )
 
     @abstractmethod
-    def _validate_single_column(self, engine, table: str, column: str,
-                                scenario: str = None) -> Dict[str, Any]:
+    def _validate_single_column(self, engine, table: str, column: str, **kwargs) -> Dict[str, Any]:
         """
         Abstract method to validate a single table/column combination
 
-        Must be implemented by subclasses (NullCheckRule, NaNCheckRule, etc.)
+        Must be implemented by subclasses (NullCheckRule, TimeSeriesValidationRule, etc.)
 
         Parameters:
         -----------
@@ -117,44 +131,11 @@ class BatchValidationRule(BaseValidationRule):
             Table name
         column : str
             Column name
-        scenario : str, optional
-            Scenario filter
+        **kwargs : additional parameters specific to validation type
+            e.g., expected_length for time series, min_value/max_value for ranges
 
         Returns:
         --------
         Dict with keys: "status", "total_rows", "invalid_count", "details", etc.
         """
         pass
-
-    # TODO: Diese DB-Verbindungsmethoden werden später durch zentrale
-    # Datenbankverbindung ersetzt
-    def _get_ssh_tunnel(self):
-        """Creates SSH tunnel context manager - TEMPORARY"""
-        ssh_config = {
-            'host': os.getenv("SSH_HOST"),
-            'user': os.getenv("SSH_USER"),
-            'key': os.path.expanduser(os.getenv("SSH_KEY_FILE")),
-            'local_port': int(os.getenv("SSH_LOCAL_PORT")),
-            'remote_port': int(os.getenv("SSH_REMOTE_PORT"))
-        }
-
-        return SSHTunnelForwarder(
-            (ssh_config['host'], 22),
-            ssh_username=ssh_config['user'],
-            ssh_pkey=ssh_config['key'],
-            remote_bind_address=('localhost', ssh_config['remote_port']),
-            local_bind_address=('localhost', ssh_config['local_port'])
-        )
-
-    def _get_database_connection(self):
-        """Creates database engine - TEMPORARY"""
-        db_config = {
-            'host': os.getenv("DB_HOST"),
-            'port': int(os.getenv("DB_PORT")),
-            'name': os.getenv("DB_NAME"),
-            'user': os.getenv("DB_USER"),
-            'password': os.getenv("DB_PASSWORD")
-        }
-
-        connection_string = f"postgresql+psycopg2://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/{db_config['name']}"
-        return create_engine(connection_string)
