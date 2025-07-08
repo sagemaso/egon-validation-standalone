@@ -4,6 +4,7 @@ from typing import List, Dict, Any
 from src.rules.base_rule import BaseValidationRule
 from src.core.validation_result import ValidationResult
 from src.core.database_manager import DatabaseManager
+from src.core.validation_logger import ValidationLogger
 
 
 class BatchValidationRule(BaseValidationRule):
@@ -12,10 +13,11 @@ class BatchValidationRule(BaseValidationRule):
     def __init__(self, rule_name: str, db_manager: DatabaseManager = None):
         super().__init__(rule_name)
         self.db_manager = db_manager or DatabaseManager()
+        self.logger = ValidationLogger(rule_name)  # Add centralized logger
 
     def validate(self, table_column_configs: List[Dict[str, Any]]) -> ValidationResult:
         """
-        Validates multiple table/column combinations with detailed logging
+        Validates multiple table/column combinations with centralized logging
         """
 
         all_results = []
@@ -24,8 +26,8 @@ class BatchValidationRule(BaseValidationRule):
         failed_tables = []
         summary = {}
 
-        # Add detailed logging
-        print(f"\n🔍 Starting {self.rule_name} validation for {total_count} table/column combinations:")
+        # Central logging start
+        self.logger.log_validation_start(self.rule_name, total_count)
 
         try:
             with self.db_manager.connection_context() as engine:
@@ -34,58 +36,60 @@ class BatchValidationRule(BaseValidationRule):
                     table = config["table"]
                     column = config["column"]
 
-                    print(f"\n   📋 [{i}/{total_count}] Validating: {table}.{column}")
+                    # Log validation item start
+                    self.logger.log_validation_item_start(i, total_count, table, column, **{k: v for k, v in config.items() if k not in ["table", "column"]})
 
-                    # Show expected parameters if available
-                    if "expected_length" in config:
-                        print(f"      Expected length: {config['expected_length']}")
+                    try:
+                        # Pass the entire config to _validate_single_column
+                        single_result = self._validate_single_column(
+                            engine, table, column, **{k: v for k, v in config.items()
+                                                      if k not in ["table", "column"]}
+                        )
 
-                    # Pass the entire config to _validate_single_column
-                    single_result = self._validate_single_column(
-                        engine, table, column, **{k: v for k, v in config.items()
-                                                  if k not in ["table", "column"]}
-                    )
+                        all_results.append(single_result)
 
-                    all_results.append(single_result)
+                        # Central logging for results
+                        if single_result["status"] == "SUCCESS":
+                            self.logger.log_success_brief(single_result)
+                        else:
+                            self.logger.log_failure_detailed(single_result)
+                            failed_count += 1
+                            failed_tables.append(f"{table}.{column}")
 
-                    # Detailed logging for each result
-                    if single_result["status"] == "SUCCESS":
-                        print(f"      ✅ SUCCESS: {single_result.get('details', 'Validation passed')}")
-                    else:
-                        print(f"      ❌ FAILED: {single_result.get('details', 'Validation failed')}")
-                        if single_result.get('expected_length'):
-                            print(f"         Expected length: {single_result['expected_length']}")
-                        if single_result.get('found_lengths'):
-                            print(f"         Found lengths: {single_result['found_lengths']}")
-                        if single_result.get('wrong_length'):
-                            print(f"         Rows with wrong length: {single_result['wrong_length']}")
-                        if single_result.get('total_rows'):
-                            print(f"         Total rows checked: {single_result['total_rows']}")
+                        # Track results for summary
+                        key = f"{table}.{column}"
+                        summary[key] = single_result["status"]
 
-                    # Track results for summary
-                    key = f"{table}.{column}"
-                    summary[key] = single_result["status"]
+                    except Exception as e:
+                        # Log execution errors
+                        self.logger.log_execution_error(table, column, e)
 
-                    if single_result["status"] == "FAILED":
+                        # Create error result
+                        error_result = {
+                            "table": table,
+                            "column": column,
+                            "status": "FAILED",
+                            "error": str(e),
+                            "details": f"Execution failed: {str(e)}"
+                        }
+                        all_results.append(error_result)
                         failed_count += 1
-                        failed_tables.append(key)
+                        failed_tables.append(f"{table}.{column}")
+                        summary[f"{table}.{column}"] = "FAILED"
 
-                # Summary logging
-                print(f"\n📊 {self.rule_name} Summary:")
-                print(f"   Total validations: {total_count}")
-                print(f"   Passed: {total_count - failed_count}")
-                print(f"   Failed: {failed_count}")
-
-                if failed_tables:
-                    print(f"   Failed tables/columns:")
-                    for failed_table in failed_tables:
-                        print(f"      ❌ {failed_table}")
+                # Central summary logging
+                passed_count = total_count - failed_count
+                self.logger.log_validation_summary(self.rule_name, total_count, passed_count, failed_count,
+                                                   failed_tables)
 
                 # Create summary ValidationResult
                 if failed_count > 0:
                     status = "CRITICAL_FAILURE"
                     error_details = f"{failed_count} of {total_count} validations failed: {', '.join(failed_tables)}"
                     message = None
+
+                    # Log critical failure
+                    self.logger.critical(f"Validation batch failed: {error_details}")
                 else:
                     status = "SUCCESS"
                     error_details = None
@@ -101,7 +105,7 @@ class BatchValidationRule(BaseValidationRule):
                     error_details=error_details,
                     detailed_context={
                         "total_validations": total_count,
-                        "passed": total_count - failed_count,
+                        "passed": passed_count,
                         "failed": failed_count,
                         "failed_tables": failed_tables,
                         "summary": summary,
@@ -110,7 +114,7 @@ class BatchValidationRule(BaseValidationRule):
                 )
 
         except Exception as e:
-            print(f"❌ Batch validation execution failed: {str(e)}")
+            self.logger.critical(f"Batch validation execution failed: {str(e)}")
             return self._create_failure_result(
                 table="multiple_tables",
                 error_details=f"Batch validation execution failed: {str(e)}"

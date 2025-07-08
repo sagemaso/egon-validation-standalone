@@ -12,14 +12,12 @@ class TimeSeriesValidationRule(BatchValidationRule):
 
     def _validate_single_column(self, engine, table: str, column: str, **kwargs) -> Dict[str, Any]:
         """
-        Validates that a single time series column has the expected length with detailed logging
+        Validates that a single time series column has the expected length
+        Central logger handles all output
         """
 
         # Get expected_length from kwargs
         expected_length = kwargs.get('expected_length', 8760)
-
-        print(f"         🔍 Checking time series length in {table}.{column}")
-        print(f"         📏 Expected length: {expected_length} values")
 
         # Simple SQL query without scenario filtering
         query = f"""
@@ -39,30 +37,13 @@ class TimeSeriesValidationRule(BatchValidationRule):
             wrong_length = result.iloc[0]['wrong_length']
             found_lengths = result.iloc[0]['found_lengths']
 
-            # Detailed logging of results
-            print(f"         📊 Results for {table}.{column}:")
-            print(f"            Total rows: {total_rows}")
-            print(f"            Correct length ({expected_length}): {correct_length}")
-            print(f"            Wrong length: {wrong_length}")
-            print(f"            Found lengths: {found_lengths}")
-
             # Determine validation result
             if wrong_length > 0:
                 status = "FAILED"
-                details = f"Found {wrong_length} time series with invalid length in {table}.{column}. "
-                details += f"Expected: {expected_length}, Found lengths: {found_lengths}, "
-                details += f"Total checked: {total_rows}"
-
-                print(f"         ❌ VALIDATION FAILED for {table}.{column}")
-                print(f"            Problem: {wrong_length} out of {total_rows} time series have wrong length")
-                print(f"            Expected: {expected_length} values per time series")
-                print(f"            Found: {found_lengths} values per time series")
+                details = f"Found {wrong_length} time series with invalid length in {table}.{column}. Expected: {expected_length}, Found lengths: {found_lengths}, Total checked: {total_rows}"
             else:
                 status = "SUCCESS"
                 details = f"All {total_rows} time series in {table}.{column} have correct length of {expected_length}"
-
-                print(f"         ✅ VALIDATION PASSED for {table}.{column}")
-                print(f"            All {total_rows} time series have correct length")
 
             return {
                 "table": table,
@@ -71,7 +52,7 @@ class TimeSeriesValidationRule(BatchValidationRule):
                 "total_rows": total_rows,
                 "correct_length": correct_length,
                 "wrong_length": wrong_length,
-                "invalid_count": wrong_length,  # For consistency with other rules
+                "invalid_count": wrong_length,
                 "expected_length": expected_length,
                 "found_lengths": found_lengths,
                 "check_type": "time_series",
@@ -79,9 +60,6 @@ class TimeSeriesValidationRule(BatchValidationRule):
             }
 
         except Exception as e:
-            print(f"         ❌ SQL EXECUTION FAILED for {table}.{column}")
-            print(f"            Error: {str(e)}")
-
             return {
                 "table": table,
                 "column": column,

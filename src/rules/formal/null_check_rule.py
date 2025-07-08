@@ -12,10 +12,23 @@ class NullCheckRule(BatchValidationRule):
 
     def _validate_single_column(self, engine, table: str, column: str, **kwargs) -> Dict[str, Any]:
         """
-        Validates that a single column contains no NULL values with detailed logging
-        """
+        Validates that a single column contains no NULL values
+        Central logger handles all output
 
-        print(f"         🔍 Checking for NULL values in {table}.{column}")
+        Parameters:
+        -----------
+        engine : SQLAlchemy Engine
+            Database connection (provided by DatabaseManager)
+        table : str
+            Table name (e.g., "demand.egon_demandregio_hh")
+        column : str
+            Column name (e.g., "demand")
+        **kwargs : additional parameters (ignored for NULL check)
+
+        Returns:
+        --------
+        Dict with validation results for this column
+        """
 
         # Simple SQL query without scenario filtering
         query = f"""
@@ -31,25 +44,13 @@ class NullCheckRule(BatchValidationRule):
             total_rows = result.iloc[0]['total_rows']
             null_count = result.iloc[0]['null_count']
 
-            # Detailed logging of results
-            print(f"         📊 Results for {table}.{column}:")
-            print(f"            Total rows: {total_rows}")
-            print(f"            NULL values: {null_count}")
-            print(f"            Valid values: {total_rows - null_count}")
-
             # Determine validation result
             if null_count > 0:
                 status = "FAILED"
                 details = f"Found {null_count} NULL values in {table}.{column} ({total_rows} rows checked)"
-
-                print(f"         ❌ VALIDATION FAILED for {table}.{column}")
-                print(f"            Problem: {null_count} NULL values found")
             else:
                 status = "SUCCESS"
                 details = f"No NULL values found in {table}.{column} ({total_rows} rows checked)"
-
-                print(f"         ✅ VALIDATION PASSED for {table}.{column}")
-                print(f"            No NULL values found")
 
             return {
                 "table": table,
@@ -63,9 +64,6 @@ class NullCheckRule(BatchValidationRule):
             }
 
         except Exception as e:
-            print(f"         ❌ SQL EXECUTION FAILED for {table}.{column}")
-            print(f"            Error: {str(e)}")
-
             return {
                 "table": table,
                 "column": column,
