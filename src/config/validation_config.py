@@ -24,9 +24,22 @@ VALIDATION_CONFIGURATIONS = {
                 "name": "time_series_completeness",
                 "rule_class": TimeSeriesValidationRule,
                 "config": [
-                    {"table": "grid.egon_etrago_load_timeseries", "column": "p_set", "expected_length": 8760},
+                    {"table": "demand.egon_demandregio_sites_ind_electricity_dsm_timeseries", "column": "p_mset", "expected_length": 8760},
+                    {"table": "demand.egon_demandregio_timeseries_cts_ind", "column": "load_curve", "expected_length": 8760},
+                    {"table": "demand.egon_etrago_electricity_cts_dsm_timeseries", "column": "p_set", "expected_length": 8760},
+                    {"table": "demand.egon_etrago_timeseries_individual_heating", "column": "dist_aggregated_mw", "expected_length": 8760},
+                    {"table": "demand.egon_heat_timeseries_selected_profiles", "column": "selected_idp_profiles", "expected_length": 8760},
+                    {"table": "demand.egon_osm_ind_load_curves_individual_dsm_timeseries", "column": "p_set", "expected_length": 8760},
+                    {"table": "demand.egon_sites_ind_load_curves_individual_dsm_timeseries", "column": "p_set", "expected_length": 8760},
+                    {"table": "demand.egon_timeseries_district_heating", "column": "dist_aggregated_mw", "expected_length": 8760},
+                    {"table": "grid.egon_etrago_bus_timeseries", "column": "v_mag_pu_set", "expected_length": 8760},
                     {"table": "grid.egon_etrago_generator_timeseries", "column": "p_max_pu", "expected_length": 8760},
-                    {"table": "grid.egon_etrago_link_timeseries", "column": "p_min_pu", "expected_length": 8760}
+                    {"table": "grid.egon_etrago_line_timeseries", "column": "s_max_pu", "expected_length": 8760},
+                    {"table": "grid.egon_etrago_link_timeseries", "column": "p_min_pu", "expected_length": 8760},
+                    {"table": "grid.egon_etrago_load_timeseries", "column": "p_set", "expected_length": 8760},
+                    {"table": "grid.egon_etrago_storage_timeseries", "column": "inflow", "expected_length": 8760},
+                    {"table": "grid.egon_etrago_store_timeseries", "column": "e_min_pu", "expected_length": 8760},
+                    {"table": "grid.egon_etrago_transformer_timeseries", "column": "s_max_pu", "expected_length": 8760},
                 ]
             }
         ]

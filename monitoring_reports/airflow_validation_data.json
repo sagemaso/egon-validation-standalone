@@ -1,0 +1,81 @@
+{
+  "sql_column_checks": {
+    "demand.egon_demandregio_hh": {
+      "demand": {
+        "null_check": {
+          "equal_to": 0
+        }
+      },
+      "nuts3": {
+        "null_check": {
+          "equal_to": 0
+        }
+      },
+      "scenario": {
+        "null_check": {
+          "equal_to": 0
+        }
+      }
+    },
+    "supply.egon_power_plants": {
+      "el_capacity": {
+        "null_check": {
+          "equal_to": 0
+        }
+      },
+      "carrier": {
+        "null_check": {
+          "equal_to": 0
+        }
+      }
+    },
+    "grid.egon_etrago_load_timeseries": {
+      "p_set": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "grid.egon_etrago_generator_timeseries": {
+      "p_max_pu": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "grid.egon_etrago_link_timeseries": {
+      "p_min_pu": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "grid.egon_etrago_line_timeseries": {
+      "s_max_pu": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "grid.egon_etrago_bus": {
+      "carrier": {
+        "null_check": {
+          "equal_to": 0
+        }
+      }
+    }
+  },
+  "sql_table_checks": {},
+  "custom_checks": [],
+  "metadata": {
+    "generated_at": "2025-07-09T13:25:23.664367",
+    "total_validations": 10,
+    "source_configurations": [
+      "comprehensive",
+      "critical_only",
+      "time_series_only",
+      "null_checks_only",
+      "quick_check"
+    ]
+  }
+}

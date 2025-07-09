@@ -1,0 +1,3771 @@
+{
+  "discovery_timestamp": "2025-07-09T13:25:23.627162",
+  "total_schemas": 10,
+  "total_tables": 198,
+  "total_columns": 2167,
+  "schemas": [
+    "boundaries",
+    "demand",
+    "grid",
+    "metadata",
+    "openstreetmap",
+    "osmtgmod_results",
+    "public",
+    "scenario",
+    "society",
+    "supply"
+  ],
+  "tables": [
+    {
+      "schema": "boundaries",
+      "table": "boundaries.egon_map_grid_districts_bus_ids",
+      "column_count": 4,
+      "columns": [
+        "mv_grid_district_id",
+        "bus_id",
+        "scn_name",
+        "geom"
+      ],
+      "estimated_row_count": 26096
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.egon_map_mvgriddistrict_vg250",
+      "column_count": 2,
+      "columns": [
+        "bus_id",
+        "vg250_lan"
+      ],
+      "estimated_row_count": 3854
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.egon_map_zensus_buildings_filtered",
+      "column_count": 3,
+      "columns": [
+        "id",
+        "grid_id",
+        "cell_id"
+      ],
+      "estimated_row_count": 28070300
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.egon_map_zensus_buildings_filtered_all",
+      "column_count": 3,
+      "columns": [
+        "id",
+        "grid_id",
+        "zensus_population_id"
+      ],
+      "estimated_row_count": 31528732
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.egon_map_zensus_buildings_residential",
+      "column_count": 3,
+      "columns": [
+        "id",
+        "grid_id",
+        "cell_id"
+      ],
+      "estimated_row_count": 27478528
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.egon_map_zensus_climate_zones",
+      "column_count": 2,
+      "columns": [
+        "zensus_population_id",
+        "climate_zone"
+      ],
+      "estimated_row_count": 3170621
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.egon_map_zensus_grid_districts",
+      "column_count": 3,
+      "columns": [
+        "index",
+        "zensus_population_id",
+        "bus_id"
+      ],
+      "estimated_row_count": 35718584
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.egon_map_zensus_mvgd_buildings",
+      "column_count": 7,
+      "columns": [
+        "building_id",
+        "sector",
+        "zensus_population_id",
+        "bus_id",
+        "osm",
+        "electricity",
+        "heat"
+      ],
+      "estimated_row_count": 22340562
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.egon_map_zensus_vg250",
+      "column_count": 4,
+      "columns": [
+        "zensus_population_id",
+        "zensus_geom",
+        "vg250_municipality_id",
+        "vg250_nuts3"
+      ],
+      "estimated_row_count": 35736812
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.egon_map_zensus_weather_cell",
+      "column_count": 2,
+      "columns": [
+        "zensus_population_id",
+        "w_id"
+      ],
+      "estimated_row_count": 35785840
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.inspee_saltstructures",
+      "column_count": 4,
+      "columns": [
+        "saltstructure_id",
+        "shape_stle",
+        "shape_star",
+        "geometry"
+      ],
+      "estimated_row_count": 315
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.vg250_gem",
+      "column_count": 28,
+      "columns": [
+        "id",
+        "ade",
+        "gf",
+        "bsg",
+        "ars",
+        "ags",
+        "sdv_ars",
+        "gen",
+        "bez",
+        "ibz",
+        "bem",
+        "nbd",
+        "sn_l",
+        "sn_r",
+        "sn_k",
+        "sn_v1",
+        "sn_v2",
+        "sn_g",
+        "fk_s3",
+        "nuts",
+        "ars_0",
+        "ags_0",
+        "wsk",
+        "debkg_id",
+        "rs",
+        "sdv_rs",
+        "rs_0",
+        "geometry"
+      ],
+      "estimated_row_count": 11135
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.vg250_gem_clean",
+      "column_count": 13,
+      "columns": [
+        "id",
+        "old_id",
+        "gen",
+        "bez",
+        "bem",
+        "nuts",
+        "rs_0",
+        "ags_0",
+        "area_ha",
+        "count_hole",
+        "path",
+        "is_hole",
+        "geometry"
+      ],
+      "estimated_row_count": 12013
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.vg250_gem_population",
+      "column_count": 33,
+      "columns": [
+        "id",
+        "ade",
+        "gf",
+        "bsg",
+        "ars",
+        "ags",
+        "sdv_ars",
+        "gen",
+        "bez",
+        "ibz",
+        "bem",
+        "nbd",
+        "sn_l",
+        "sn_r",
+        "sn_k",
+        "sn_v1",
+        "sn_v2",
+        "sn_g",
+        "fk_s3",
+        "nuts",
+        "ars_0",
+        "ags_0",
+        "wsk",
+        "debkg_id",
+        "rs",
+        "sdv_rs",
+        "rs_0",
+        "geometry",
+        "area_ha",
+        "area_km2",
+        "population_total",
+        "cell_count",
+        "population_density"
+      ],
+      "estimated_row_count": 11135
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.vg250_krs",
+      "column_count": 28,
+      "columns": [
+        "id",
+        "ade",
+        "gf",
+        "bsg",
+        "ars",
+        "ags",
+        "sdv_ars",
+        "gen",
+        "bez",
+        "ibz",
+        "bem",
+        "nbd",
+        "sn_l",
+        "sn_r",
+        "sn_k",
+        "sn_v1",
+        "sn_v2",
+        "sn_g",
+        "fk_s3",
+        "nuts",
+        "ars_0",
+        "ags_0",
+        "wsk",
+        "debkg_id",
+        "rs",
+        "sdv_rs",
+        "rs_0",
+        "geometry"
+      ],
+      "estimated_row_count": 431
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.vg250_lan",
+      "column_count": 28,
+      "columns": [
+        "id",
+        "ade",
+        "gf",
+        "bsg",
+        "ars",
+        "ags",
+        "sdv_ars",
+        "gen",
+        "bez",
+        "ibz",
+        "bem",
+        "nbd",
+        "sn_l",
+        "sn_r",
+        "sn_k",
+        "sn_v1",
+        "sn_v2",
+        "sn_g",
+        "fk_s3",
+        "nuts",
+        "ars_0",
+        "ags_0",
+        "wsk",
+        "debkg_id",
+        "rs",
+        "sdv_rs",
+        "rs_0",
+        "geometry"
+      ],
+      "estimated_row_count": 35
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.vg250_rbz",
+      "column_count": 28,
+      "columns": [
+        "id",
+        "ade",
+        "gf",
+        "bsg",
+        "ars",
+        "ags",
+        "sdv_ars",
+        "gen",
+        "bez",
+        "ibz",
+        "bem",
+        "nbd",
+        "sn_l",
+        "sn_r",
+        "sn_k",
+        "sn_v1",
+        "sn_v2",
+        "sn_g",
+        "fk_s3",
+        "nuts",
+        "ars_0",
+        "ags_0",
+        "wsk",
+        "debkg_id",
+        "rs",
+        "sdv_rs",
+        "rs_0",
+        "geometry"
+      ],
+      "estimated_row_count": 20
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.vg250_sta",
+      "column_count": 28,
+      "columns": [
+        "id",
+        "ade",
+        "gf",
+        "bsg",
+        "ars",
+        "ags",
+        "sdv_ars",
+        "gen",
+        "bez",
+        "ibz",
+        "bem",
+        "nbd",
+        "sn_l",
+        "sn_r",
+        "sn_k",
+        "sn_v1",
+        "sn_v2",
+        "sn_g",
+        "fk_s3",
+        "nuts",
+        "ars_0",
+        "ags_0",
+        "wsk",
+        "debkg_id",
+        "rs",
+        "sdv_rs",
+        "rs_0",
+        "geometry"
+      ],
+      "estimated_row_count": 11
+    },
+    {
+      "schema": "boundaries",
+      "table": "boundaries.vg250_vwg",
+      "column_count": 28,
+      "columns": [
+        "id",
+        "ade",
+        "gf",
+        "bsg",
+        "ars",
+        "ags",
+        "sdv_ars",
+        "gen",
+        "bez",
+        "ibz",
+        "bem",
+        "nbd",
+        "sn_l",
+        "sn_r",
+        "sn_k",
+        "sn_v1",
+        "sn_v2",
+        "sn_g",
+        "fk_s3",
+        "nuts",
+        "ars_0",
+        "ags_0",
+        "wsk",
+        "debkg_id",
+        "rs",
+        "sdv_rs",
+        "rs_0",
+        "geometry"
+      ],
+      "estimated_row_count": 4688
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_building_electricity_peak_loads",
+      "column_count": 5,
+      "columns": [
+        "building_id",
+        "scenario",
+        "sector",
+        "peak_load_in_w",
+        "voltage_level"
+      ],
+      "estimated_row_count": 44683620
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_building_heat_peak_loads",
+      "column_count": 4,
+      "columns": [
+        "building_id",
+        "scenario",
+        "sector",
+        "peak_load_in_w"
+      ],
+      "estimated_row_count": 42128820
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_cts_electricity_demand_building_share",
+      "column_count": 4,
+      "columns": [
+        "building_id",
+        "scenario",
+        "bus_id",
+        "profile_share"
+      ],
+      "estimated_row_count": 1963028
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_cts_heat_demand_building_share",
+      "column_count": 4,
+      "columns": [
+        "building_id",
+        "scenario",
+        "bus_id",
+        "profile_share"
+      ],
+      "estimated_row_count": 1963028
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_daily_heat_demand_per_climate_zone",
+      "column_count": 4,
+      "columns": [
+        "climate_zone",
+        "day_of_year",
+        "temperature_class",
+        "daily_demand_share"
+      ],
+      "estimated_row_count": 5475
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_demandregio_cts_ind",
+      "column_count": 5,
+      "columns": [
+        "nuts3",
+        "wz",
+        "scenario",
+        "year",
+        "demand"
+      ],
+      "estimated_row_count": 103458
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_demandregio_hh",
+      "column_count": 5,
+      "columns": [
+        "nuts3",
+        "hh_size",
+        "scenario",
+        "year",
+        "demand"
+      ],
+      "estimated_row_count": 7218
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_demandregio_osm_ind_electricity",
+      "column_count": 5,
+      "columns": [
+        "id",
+        "osm_id",
+        "scenario",
+        "wz",
+        "demand"
+      ],
+      "estimated_row_count": 1310004
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_demandregio_sites_ind_electricity",
+      "column_count": 4,
+      "columns": [
+        "industrial_sites_id",
+        "scenario",
+        "wz",
+        "demand"
+      ],
+      "estimated_row_count": 2175
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_demandregio_sites_ind_electricity_dsm_timeseries",
+      "column_count": 9,
+      "columns": [
+        "industrial_sites_id",
+        "scn_name",
+        "bus",
+        "application",
+        "p_set",
+        "p_max",
+        "p_min",
+        "e_max",
+        "e_min"
+      ],
+      "estimated_row_count": 472
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_demandregio_timeseries_cts_ind",
+      "column_count": 4,
+      "columns": [
+        "wz",
+        "year",
+        "slp",
+        "load_curve"
+      ],
+      "estimated_row_count": 88
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_demandregio_wz",
+      "column_count": 3,
+      "columns": [
+        "wz",
+        "sector",
+        "definition"
+      ],
+      "estimated_row_count": 87
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_demandregio_zensus_electricity",
+      "column_count": 4,
+      "columns": [
+        "zensus_population_id",
+        "scenario",
+        "sector",
+        "demand"
+      ],
+      "estimated_row_count": 7355160
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_district_heating_areas",
+      "column_count": 5,
+      "columns": [
+        "id",
+        "area_id",
+        "scenario",
+        "geom_polygon",
+        "residential_and_service_demand"
+      ],
+      "estimated_row_count": 6335
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_etrago_electricity_cts",
+      "column_count": 4,
+      "columns": [
+        "bus_id",
+        "scn_name",
+        "p_set",
+        "q_set"
+      ],
+      "estimated_row_count": 7554
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_etrago_electricity_cts_dsm_timeseries",
+      "column_count": 7,
+      "columns": [
+        "bus",
+        "scn_name",
+        "p_set",
+        "p_max",
+        "p_min",
+        "e_max",
+        "e_min"
+      ],
+      "estimated_row_count": 7554
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_etrago_electricity_households",
+      "column_count": 4,
+      "columns": [
+        "bus_id",
+        "scn_name",
+        "p_set",
+        "q_set"
+      ],
+      "estimated_row_count": 7674
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_etrago_heat_cts",
+      "column_count": 3,
+      "columns": [
+        "bus_id",
+        "scn_name",
+        "p_set"
+      ],
+      "estimated_row_count": 7550
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_etrago_timeseries_individual_heating",
+      "column_count": 4,
+      "columns": [
+        "bus_id",
+        "scenario",
+        "carrier",
+        "dist_aggregated_mw"
+      ],
+      "estimated_row_count": 11538
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_ev_count_municipality",
+      "column_count": 10,
+      "columns": [
+        "scenario",
+        "scenario_variation",
+        "ags",
+        "bev_mini",
+        "bev_medium",
+        "bev_luxury",
+        "phev_mini",
+        "phev_medium",
+        "phev_luxury",
+        "rs7_id"
+      ],
+      "estimated_row_count": 44012
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_ev_count_mv_grid_district",
+      "column_count": 10,
+      "columns": [
+        "scenario",
+        "scenario_variation",
+        "bus_id",
+        "bev_mini",
+        "bev_medium",
+        "bev_luxury",
+        "phev_mini",
+        "phev_medium",
+        "phev_luxury",
+        "rs7_id"
+      ],
+      "estimated_row_count": 15348
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_ev_count_registration_district",
+      "column_count": 10,
+      "columns": [
+        "scenario",
+        "scenario_variation",
+        "ags_reg_district",
+        "reg_district",
+        "bev_mini",
+        "bev_medium",
+        "bev_luxury",
+        "phev_mini",
+        "phev_medium",
+        "phev_luxury"
+      ],
+      "estimated_row_count": 1600
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_ev_metadata",
+      "column_count": 8,
+      "columns": [
+        "scenario",
+        "eta_cp",
+        "stepsize",
+        "start_date",
+        "end_date",
+        "soc_min",
+        "grid_timeseries",
+        "grid_timeseries_by_usecase"
+      ],
+      "estimated_row_count": 2
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_ev_mv_grid_district",
+      "column_count": 5,
+      "columns": [
+        "id",
+        "scenario",
+        "scenario_variation",
+        "bus_id",
+        "egon_ev_pool_ev_id"
+      ],
+      "estimated_row_count": 125609552
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_ev_pool",
+      "column_count": 5,
+      "columns": [
+        "scenario",
+        "ev_id",
+        "rs7_id",
+        "type",
+        "simbev_ev_id"
+      ],
+      "estimated_row_count": 65376
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_ev_trip",
+      "column_count": 17,
+      "columns": [
+        "scenario",
+        "event_id",
+        "egon_ev_pool_ev_id",
+        "simbev_event_id",
+        "location",
+        "use_case",
+        "charging_capacity_nominal",
+        "charging_capacity_grid",
+        "charging_capacity_battery",
+        "soc_start",
+        "soc_end",
+        "charging_demand",
+        "park_start",
+        "park_end",
+        "drive_start",
+        "drive_end",
+        "consumption"
+      ],
+      "estimated_row_count": 108342192
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_heat_idp_pool",
+      "column_count": 4,
+      "columns": [
+        "index",
+        "idp",
+        "house",
+        "temperature_class"
+      ],
+      "estimated_row_count": 459535
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_heat_timeseries_selected_profiles",
+      "column_count": 3,
+      "columns": [
+        "zensus_population_id",
+        "building_id",
+        "selected_idp_profiles"
+      ],
+      "estimated_row_count": 20606560
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_heavy_duty_transport_voronoi",
+      "column_count": 7,
+      "columns": [
+        "nuts3",
+        "geometry",
+        "area",
+        "truck_traffic",
+        "normalized_truck_traffic",
+        "hydrogen_consumption",
+        "scenario"
+      ],
+      "estimated_row_count": 802
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_hotmaps_industrial_sites",
+      "column_count": 20,
+      "columns": [
+        "siteid",
+        "sitename",
+        "companyname",
+        "address",
+        "citycode",
+        "city",
+        "country",
+        "location",
+        "subsector",
+        "datasource",
+        "emissions_ets_2014",
+        "emissions_eprtr_2014",
+        "production",
+        "fuel_demand",
+        "excess_heat_100_200C",
+        "excess_heat_200_500C",
+        "excess_heat_500C",
+        "excess_heat_total",
+        "geom",
+        "wz"
+      ],
+      "estimated_row_count": 692
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_household_electricity_profile_in_census_cell",
+      "column_count": 7,
+      "columns": [
+        "cell_id",
+        "grid_id",
+        "cell_profile_ids",
+        "nuts3",
+        "nuts1",
+        "factor_2035",
+        "factor_2050"
+      ],
+      "estimated_row_count": 3177723
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_household_electricity_profile_of_buildings",
+      "column_count": 4,
+      "columns": [
+        "id",
+        "building_id",
+        "cell_id",
+        "profile_id"
+      ],
+      "estimated_row_count": 38605220
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_hp_capacity_buildings",
+      "column_count": 3,
+      "columns": [
+        "building_id",
+        "scenario",
+        "hp_capacity"
+      ],
+      "estimated_row_count": 1287354
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_industrial_sites",
+      "column_count": 7,
+      "columns": [
+        "id",
+        "companyname",
+        "address",
+        "subsector",
+        "wz",
+        "nuts3",
+        "geom"
+      ],
+      "estimated_row_count": 725
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_loadarea",
+      "column_count": 46,
+      "columns": [
+        "id",
+        "bus_id",
+        "area_ha",
+        "nuts",
+        "rs_0",
+        "ags_0",
+        "zensus_sum",
+        "zensus_count",
+        "zensus_density",
+        "sector_area_residential",
+        "sector_area_cts",
+        "sector_area_industrial",
+        "sector_area_agricultural",
+        "sector_area_sum",
+        "sector_share_residential",
+        "sector_share_cts",
+        "sector_share_industrial",
+        "sector_share_agricultural",
+        "sector_share_sum",
+        "sector_count_residential",
+        "sector_count_cts",
+        "sector_count_industrial",
+        "sector_count_agricultural",
+        "sector_count_sum",
+        "sector_consumption_residential",
+        "sector_consumption_residential_2035",
+        "sector_consumption_residential_2050",
+        "sector_consumption_cts",
+        "sector_consumption_cts_2035",
+        "sector_consumption_cts_2050",
+        "sector_consumption_industrial",
+        "sector_consumption_industrial_2035",
+        "sector_consumption_industrial_2050",
+        "sector_peakload_cts",
+        "sector_peakload_cts_2035",
+        "sector_peakload_cts_2050",
+        "sector_peakload_residential",
+        "sector_peakload_residential_2035",
+        "sector_peakload_residential_2050",
+        "sector_peakload_industrial",
+        "sector_peakload_industrial_2035",
+        "sector_peakload_industrial_2050",
+        "geom_centroid",
+        "geom_surfacepoint",
+        "geom_centre",
+        "geom"
+      ],
+      "estimated_row_count": 218098
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_map_zensus_district_heating_areas",
+      "column_count": 4,
+      "columns": [
+        "id",
+        "area_id",
+        "scenario",
+        "zensus_population_id"
+      ],
+      "estimated_row_count": 270955
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_osm_ind_load_curves",
+      "column_count": 3,
+      "columns": [
+        "bus",
+        "scn_name",
+        "p_set"
+      ],
+      "estimated_row_count": 9816
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_osm_ind_load_curves_individual",
+      "column_count": 7,
+      "columns": [
+        "osm_id",
+        "bus_id",
+        "scn_name",
+        "p_set",
+        "peak_load",
+        "demand",
+        "voltage_level"
+      ],
+      "estimated_row_count": 61269
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_osm_ind_load_curves_individual_dsm_timeseries",
+      "column_count": 8,
+      "columns": [
+        "osm_id",
+        "scn_name",
+        "bus",
+        "p_set",
+        "p_max",
+        "p_min",
+        "e_max",
+        "e_min"
+      ],
+      "estimated_row_count": 61269
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_peta_heat",
+      "column_count": 5,
+      "columns": [
+        "id",
+        "demand",
+        "sector",
+        "scenario",
+        "zensus_population_id"
+      ],
+      "estimated_row_count": 6836426
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_schmidt_industrial_sites",
+      "column_count": 10,
+      "columns": [
+        "id",
+        "application",
+        "plant",
+        "landkreis_number",
+        "annual_tonnes",
+        "capacity_production",
+        "lat",
+        "lon",
+        "geom",
+        "wz"
+      ],
+      "estimated_row_count": 236
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_seenergies_industrial_sites",
+      "column_count": 29,
+      "columns": [
+        "objectid",
+        "siteid",
+        "companyname",
+        "address",
+        "country",
+        "eu28",
+        "subsector",
+        "lat",
+        "lon",
+        "nuts1",
+        "nuts3",
+        "excess_heat",
+        "level_1_tj",
+        "level_2_tj",
+        "level_3_tj",
+        "level_1_r_tj",
+        "level_2_r_tj",
+        "level_3_r_tj",
+        "level_1_pj",
+        "level_2_pj",
+        "level_3_pj",
+        "level_1_r_pj",
+        "level_2_r_pj",
+        "level_3_r_pj",
+        "electricitydemand_tj",
+        "fueldemand_tj",
+        "globalid",
+        "geom",
+        "wz"
+      ],
+      "estimated_row_count": 338
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_sites_ind_load_curves",
+      "column_count": 4,
+      "columns": [
+        "bus",
+        "scn_name",
+        "wz",
+        "p_set"
+      ],
+      "estimated_row_count": 1608
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_sites_ind_load_curves_individual",
+      "column_count": 8,
+      "columns": [
+        "site_id",
+        "bus_id",
+        "scn_name",
+        "p_set",
+        "peak_load",
+        "demand",
+        "voltage_level",
+        "wz"
+      ],
+      "estimated_row_count": 2166
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_sites_ind_load_curves_individual_dsm_timeseries",
+      "column_count": 8,
+      "columns": [
+        "site_id",
+        "scn_name",
+        "bus",
+        "p_set",
+        "p_max",
+        "p_min",
+        "e_max",
+        "e_min"
+      ],
+      "estimated_row_count": 606
+    },
+    {
+      "schema": "demand",
+      "table": "demand.egon_timeseries_district_heating",
+      "column_count": 3,
+      "columns": [
+        "area_id",
+        "scenario",
+        "dist_aggregated_mw"
+      ],
+      "estimated_row_count": 6335
+    },
+    {
+      "schema": "demand",
+      "table": "demand.iee_household_load_profiles",
+      "column_count": 3,
+      "columns": [
+        "id",
+        "type",
+        "load_in_wh"
+      ],
+      "estimated_row_count": 100000
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_ehv_substation",
+      "column_count": 16,
+      "columns": [
+        "bus_id",
+        "lon",
+        "lat",
+        "point",
+        "polygon",
+        "voltage",
+        "power_type",
+        "substation",
+        "osm_id",
+        "osm_www",
+        "frequency",
+        "subst_name",
+        "ref",
+        "operator",
+        "dbahn",
+        "status"
+      ],
+      "estimated_row_count": 437
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_ehv_substation_voronoi",
+      "column_count": 3,
+      "columns": [
+        "id",
+        "bus_id",
+        "geom"
+      ],
+      "estimated_row_count": 437
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_ehv_transfer_buses",
+      "column_count": 16,
+      "columns": [
+        "bus_id",
+        "lon",
+        "lat",
+        "point",
+        "polygon",
+        "voltage",
+        "power_type",
+        "substation",
+        "osm_id",
+        "osm_www",
+        "frequency",
+        "subst_name",
+        "ref",
+        "operator",
+        "dbahn",
+        "status"
+      ],
+      "estimated_row_count": 454
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_emob_charging_infrastructure",
+      "column_count": 5,
+      "columns": [
+        "cp_id",
+        "mv_grid_id",
+        "use_case",
+        "weight",
+        "geometry"
+      ],
+      "estimated_row_count": 3998841
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_ac_h2",
+      "column_count": 3,
+      "columns": [
+        "bus_H2",
+        "bus_AC",
+        "scn_name"
+      ],
+      "estimated_row_count": 218
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_bus",
+      "column_count": 12,
+      "columns": [
+        "scn_name",
+        "bus_id",
+        "v_nom",
+        "type",
+        "carrier",
+        "v_mag_pu_set",
+        "v_mag_pu_min",
+        "v_mag_pu_max",
+        "x",
+        "y",
+        "geom",
+        "country"
+      ],
+      "estimated_row_count": 85710
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_bus_timeseries",
+      "column_count": 3,
+      "columns": [
+        "scn_name",
+        "bus_id",
+        "v_mag_pu_set"
+      ],
+      "estimated_row_count": -1
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_carrier",
+      "column_count": 5,
+      "columns": [
+        "name",
+        "co2_emissions",
+        "color",
+        "nice_name",
+        "commentary"
+      ],
+      "estimated_row_count": 46
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_ch4_h2",
+      "column_count": 3,
+      "columns": [
+        "bus_H2",
+        "bus_CH4",
+        "scn_name"
+      ],
+      "estimated_row_count": 619
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_extension_bus",
+      "column_count": 12,
+      "columns": [
+        "scn_name",
+        "bus_id",
+        "v_nom",
+        "type",
+        "carrier",
+        "v_mag_pu_set",
+        "v_mag_pu_min",
+        "v_mag_pu_max",
+        "x",
+        "y",
+        "geom",
+        "country"
+      ],
+      "estimated_row_count": 152
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_extension_line",
+      "column_count": 27,
+      "columns": [
+        "scn_name",
+        "line_id",
+        "bus0",
+        "bus1",
+        "type",
+        "carrier",
+        "x",
+        "r",
+        "g",
+        "b",
+        "s_nom",
+        "s_nom_extendable",
+        "s_nom_min",
+        "s_nom_max",
+        "s_max_pu",
+        "build_year",
+        "lifetime",
+        "capital_cost",
+        "length",
+        "cables",
+        "terrain_factor",
+        "num_parallel",
+        "v_ang_min",
+        "v_ang_max",
+        "v_nom",
+        "geom",
+        "topo"
+      ],
+      "estimated_row_count": 880
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_extension_link",
+      "column_count": 22,
+      "columns": [
+        "scn_name",
+        "link_id",
+        "bus0",
+        "bus1",
+        "type",
+        "carrier",
+        "efficiency",
+        "build_year",
+        "lifetime",
+        "p_nom",
+        "p_nom_extendable",
+        "p_nom_min",
+        "p_nom_max",
+        "p_min_pu",
+        "p_max_pu",
+        "p_set",
+        "capital_cost",
+        "marginal_cost",
+        "length",
+        "terrain_factor",
+        "geom",
+        "topo"
+      ],
+      "estimated_row_count": 22
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_extension_transformer",
+      "column_count": 27,
+      "columns": [
+        "scn_name",
+        "trafo_id",
+        "bus0",
+        "bus1",
+        "type",
+        "model",
+        "x",
+        "r",
+        "g",
+        "b",
+        "s_nom",
+        "s_nom_extendable",
+        "s_nom_min",
+        "s_nom_max",
+        "s_max_pu",
+        "tap_ratio",
+        "tap_side",
+        "tap_position",
+        "phase_shift",
+        "build_year",
+        "lifetime",
+        "v_ang_min",
+        "v_ang_max",
+        "capital_cost",
+        "num_parallel",
+        "geom",
+        "topo"
+      ],
+      "estimated_row_count": 152
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_generator",
+      "column_count": 32,
+      "columns": [
+        "scn_name",
+        "generator_id",
+        "bus",
+        "control",
+        "type",
+        "carrier",
+        "p_nom",
+        "p_nom_extendable",
+        "p_nom_min",
+        "p_nom_max",
+        "p_min_pu",
+        "p_max_pu",
+        "p_set",
+        "q_set",
+        "sign",
+        "marginal_cost",
+        "build_year",
+        "lifetime",
+        "capital_cost",
+        "efficiency",
+        "committable",
+        "start_up_cost",
+        "shut_down_cost",
+        "min_up_time",
+        "min_down_time",
+        "up_time_before",
+        "down_time_before",
+        "ramp_limit_up",
+        "ramp_limit_down",
+        "ramp_limit_start_up",
+        "ramp_limit_shut_down",
+        "e_nom_max"
+      ],
+      "estimated_row_count": 40577
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_generator_timeseries",
+      "column_count": 8,
+      "columns": [
+        "scn_name",
+        "generator_id",
+        "temp_id",
+        "p_set",
+        "q_set",
+        "p_min_pu",
+        "p_max_pu",
+        "marginal_cost"
+      ],
+      "estimated_row_count": 28651
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_hv_busmap",
+      "column_count": 5,
+      "columns": [
+        "scn_name",
+        "bus0",
+        "bus1",
+        "path_length",
+        "version"
+      ],
+      "estimated_row_count": -1
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_line",
+      "column_count": 27,
+      "columns": [
+        "scn_name",
+        "line_id",
+        "bus0",
+        "bus1",
+        "type",
+        "carrier",
+        "x",
+        "r",
+        "g",
+        "b",
+        "s_nom",
+        "s_nom_extendable",
+        "s_nom_min",
+        "s_nom_max",
+        "s_max_pu",
+        "build_year",
+        "lifetime",
+        "capital_cost",
+        "length",
+        "cables",
+        "terrain_factor",
+        "num_parallel",
+        "v_ang_min",
+        "v_ang_max",
+        "v_nom",
+        "geom",
+        "topo"
+      ],
+      "estimated_row_count": 69901
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_line_timeseries",
+      "column_count": 4,
+      "columns": [
+        "scn_name",
+        "line_id",
+        "temp_id",
+        "s_max_pu"
+      ],
+      "estimated_row_count": 69714
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_link",
+      "column_count": 22,
+      "columns": [
+        "scn_name",
+        "link_id",
+        "bus0",
+        "bus1",
+        "type",
+        "carrier",
+        "efficiency",
+        "build_year",
+        "lifetime",
+        "p_nom",
+        "p_nom_extendable",
+        "p_nom_min",
+        "p_nom_max",
+        "p_min_pu",
+        "p_max_pu",
+        "p_set",
+        "capital_cost",
+        "marginal_cost",
+        "length",
+        "terrain_factor",
+        "geom",
+        "topo"
+      ],
+      "estimated_row_count": 83980
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_link_timeseries",
+      "column_count": 8,
+      "columns": [
+        "scn_name",
+        "link_id",
+        "temp_id",
+        "p_set",
+        "p_min_pu",
+        "p_max_pu",
+        "efficiency",
+        "marginal_cost"
+      ],
+      "estimated_row_count": 25729
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_load",
+      "column_count": 8,
+      "columns": [
+        "scn_name",
+        "load_id",
+        "bus",
+        "type",
+        "carrier",
+        "p_set",
+        "q_set",
+        "sign"
+      ],
+      "estimated_row_count": 44091
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_load_timeseries",
+      "column_count": 5,
+      "columns": [
+        "scn_name",
+        "load_id",
+        "temp_id",
+        "p_set",
+        "q_set"
+      ],
+      "estimated_row_count": 44013
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_storage",
+      "column_count": 27,
+      "columns": [
+        "scn_name",
+        "storage_id",
+        "bus",
+        "control",
+        "type",
+        "carrier",
+        "p_nom",
+        "p_nom_extendable",
+        "p_nom_min",
+        "p_nom_max",
+        "p_min_pu",
+        "p_max_pu",
+        "p_set",
+        "q_set",
+        "sign",
+        "marginal_cost",
+        "capital_cost",
+        "build_year",
+        "lifetime",
+        "state_of_charge_initial",
+        "cyclic_state_of_charge",
+        "state_of_charge_set",
+        "max_hours",
+        "efficiency_store",
+        "efficiency_dispatch",
+        "standing_loss",
+        "inflow"
+      ],
+      "estimated_row_count": 13044
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_storage_timeseries",
+      "column_count": 10,
+      "columns": [
+        "scn_name",
+        "storage_id",
+        "temp_id",
+        "p_set",
+        "q_set",
+        "p_min_pu",
+        "p_max_pu",
+        "state_of_charge_set",
+        "inflow",
+        "marginal_cost"
+      ],
+      "estimated_row_count": 9
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_store",
+      "column_count": 21,
+      "columns": [
+        "scn_name",
+        "store_id",
+        "bus",
+        "type",
+        "carrier",
+        "e_nom",
+        "e_nom_extendable",
+        "e_nom_min",
+        "e_nom_max",
+        "e_min_pu",
+        "e_max_pu",
+        "p_set",
+        "q_set",
+        "e_initial",
+        "e_cyclic",
+        "sign",
+        "marginal_cost",
+        "capital_cost",
+        "standing_loss",
+        "build_year",
+        "lifetime"
+      ],
+      "estimated_row_count": 26520
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_store_timeseries",
+      "column_count": 8,
+      "columns": [
+        "scn_name",
+        "store_id",
+        "temp_id",
+        "p_set",
+        "q_set",
+        "e_min_pu",
+        "e_max_pu",
+        "marginal_cost"
+      ],
+      "estimated_row_count": 15281
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_temp_resolution",
+      "column_count": 4,
+      "columns": [
+        "temp_id",
+        "timesteps",
+        "resolution",
+        "start_time"
+      ],
+      "estimated_row_count": 1
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_transformer",
+      "column_count": 27,
+      "columns": [
+        "scn_name",
+        "trafo_id",
+        "bus0",
+        "bus1",
+        "type",
+        "model",
+        "x",
+        "r",
+        "g",
+        "b",
+        "s_nom",
+        "s_nom_extendable",
+        "s_nom_min",
+        "s_nom_max",
+        "s_max_pu",
+        "tap_ratio",
+        "tap_side",
+        "tap_position",
+        "phase_shift",
+        "build_year",
+        "lifetime",
+        "v_ang_min",
+        "v_ang_max",
+        "capital_cost",
+        "num_parallel",
+        "geom",
+        "topo"
+      ],
+      "estimated_row_count": 1545
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_etrago_transformer_timeseries",
+      "column_count": 4,
+      "columns": [
+        "scn_name",
+        "trafo_id",
+        "temp_id",
+        "s_max_pu"
+      ],
+      "estimated_row_count": -1
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_gas_voronoi",
+      "column_count": 4,
+      "columns": [
+        "scn_name",
+        "bus_id",
+        "carrier",
+        "geom"
+      ],
+      "estimated_row_count": 2908
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_hvmv_substation",
+      "column_count": 16,
+      "columns": [
+        "bus_id",
+        "lon",
+        "lat",
+        "point",
+        "polygon",
+        "voltage",
+        "power_type",
+        "substation",
+        "osm_id",
+        "osm_www",
+        "frequency",
+        "subst_name",
+        "ref",
+        "operator",
+        "dbahn",
+        "status"
+      ],
+      "estimated_row_count": 3854
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_hvmv_substation.point",
+      "column_count": 2,
+      "columns": [
+        "bus_id",
+        "point"
+      ],
+      "estimated_row_count": -1
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_hvmv_substation_voronoi",
+      "column_count": 3,
+      "columns": [
+        "id",
+        "bus_id",
+        "geom"
+      ],
+      "estimated_row_count": 3854
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_hvmv_transfer_buses",
+      "column_count": 16,
+      "columns": [
+        "bus_id",
+        "lon",
+        "lat",
+        "point",
+        "polygon",
+        "voltage",
+        "power_type",
+        "substation",
+        "osm_id",
+        "osm_www",
+        "frequency",
+        "subst_name",
+        "ref",
+        "operator",
+        "dbahn",
+        "status"
+      ],
+      "estimated_row_count": 3976
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_mv_grid_district",
+      "column_count": 3,
+      "columns": [
+        "bus_id",
+        "geom",
+        "area"
+      ],
+      "estimated_row_count": 3854
+    },
+    {
+      "schema": "grid",
+      "table": "grid.egon_saltstructures_storage_potential",
+      "column_count": 9,
+      "columns": [
+        "index",
+        "saltstructure_id",
+        "shape_stle",
+        "shape_star",
+        "gen",
+        "potential",
+        "bus_id",
+        "geometry",
+        "area_fraction"
+      ],
+      "estimated_row_count": 225
+    },
+    {
+      "schema": "metadata",
+      "table": "metadata.datasets",
+      "column_count": 4,
+      "columns": [
+        "id",
+        "name",
+        "version",
+        "epoch"
+      ],
+      "estimated_row_count": 76
+    },
+    {
+      "schema": "metadata",
+      "table": "metadata.dependency_graph",
+      "column_count": 2,
+      "columns": [
+        "dependency_id",
+        "dependent_id"
+      ],
+      "estimated_row_count": 254
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.egon_cts_buildings",
+      "column_count": 6,
+      "columns": [
+        "serial",
+        "id",
+        "zensus_population_id",
+        "geom_building",
+        "n_amenities_inside",
+        "source"
+      ],
+      "estimated_row_count": 990572
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_amenities_in_buildings_filtered",
+      "column_count": 9,
+      "columns": [
+        "egon_amenity_id",
+        "amenity",
+        "name",
+        "geom_amenity",
+        "osm_id_building",
+        "id",
+        "area",
+        "geom_building",
+        "zensus_population_id"
+      ],
+      "estimated_row_count": 618445
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_amenities_not_in_buildings",
+      "column_count": 6,
+      "columns": [
+        "osm_id",
+        "amenity",
+        "name",
+        "geom_amenity",
+        "tags",
+        "egon_amenity_id"
+      ],
+      "estimated_row_count": 79928
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_amenities_not_in_buildings_filtered",
+      "column_count": 6,
+      "columns": [
+        "osm_id",
+        "amenity",
+        "name",
+        "geom_amenity",
+        "tags",
+        "egon_amenity_id"
+      ],
+      "estimated_row_count": 81870
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_amenities_shops_filtered",
+      "column_count": 6,
+      "columns": [
+        "osm_id",
+        "amenity",
+        "name",
+        "geom_amenity",
+        "tags",
+        "egon_amenity_id"
+      ],
+      "estimated_row_count": 700315
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_buildings",
+      "column_count": 9,
+      "columns": [
+        "osm_id",
+        "amenity",
+        "building",
+        "name",
+        "geom_building",
+        "area",
+        "geom_point",
+        "tags",
+        "id"
+      ],
+      "estimated_row_count": 34328484
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_buildings_filtered",
+      "column_count": 9,
+      "columns": [
+        "osm_id",
+        "amenity",
+        "building",
+        "name",
+        "geom_building",
+        "area",
+        "geom_point",
+        "tags",
+        "id"
+      ],
+      "estimated_row_count": 31619904
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_buildings_filtered_with_amenities",
+      "column_count": 6,
+      "columns": [
+        "id",
+        "n_amenities_inside",
+        "geom_building",
+        "geom_point",
+        "area",
+        "building"
+      ],
+      "estimated_row_count": 466495
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_buildings_residential",
+      "column_count": 9,
+      "columns": [
+        "osm_id",
+        "amenity",
+        "building",
+        "name",
+        "geom_building",
+        "area",
+        "geom_point",
+        "tags",
+        "id"
+      ],
+      "estimated_row_count": 30708222
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_buildings_synthetic",
+      "column_count": 7,
+      "columns": [
+        "id",
+        "cell_id",
+        "geom_building",
+        "geom_point",
+        "n_amenities_inside",
+        "building",
+        "area"
+      ],
+      "estimated_row_count": 706911
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_buildings_with_amenities",
+      "column_count": 13,
+      "columns": [
+        "osm_id_amenity",
+        "osm_id_building",
+        "id",
+        "building",
+        "area",
+        "geom_building",
+        "geom_amenity",
+        "geom_point",
+        "name",
+        "tags_building",
+        "tags_amenity",
+        "n_amenities_inside",
+        "apartment_count"
+      ],
+      "estimated_row_count": 621385
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_buildings_without_amenities",
+      "column_count": 9,
+      "columns": [
+        "osm_id",
+        "id",
+        "building",
+        "area",
+        "geom_building",
+        "geom_point",
+        "name",
+        "tags",
+        "apartment_count"
+      ],
+      "estimated_row_count": 31168056
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_landuse",
+      "column_count": 9,
+      "columns": [
+        "id",
+        "osm_id",
+        "name",
+        "sector",
+        "sector_name",
+        "area_ha",
+        "tags",
+        "vg250",
+        "geom"
+      ],
+      "estimated_row_count": 712608
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_line",
+      "column_count": 79,
+      "columns": [
+        "osm_id",
+        "access",
+        "addr:housename",
+        "addr:housenumber",
+        "addr:interpolation",
+        "admin_level",
+        "aerialway",
+        "aeroway",
+        "amenity",
+        "area",
+        "barrier",
+        "bicycle",
+        "brand",
+        "bridge",
+        "boundary",
+        "building",
+        "construction",
+        "covered",
+        "culvert",
+        "cutting",
+        "denomination",
+        "disused",
+        "embankment",
+        "foot",
+        "generator:source",
+        "harbour",
+        "highway",
+        "historic",
+        "horse",
+        "intermittent",
+        "junction",
+        "landuse",
+        "layer",
+        "leisure",
+        "line",
+        "lock",
+        "man_made",
+        "military",
+        "motorcar",
+        "name",
+        "natural",
+        "office",
+        "oneway",
+        "operator",
+        "place",
+        "population",
+        "power",
+        "power_source",
+        "public_transport",
+        "railway",
+        "ref",
+        "religion",
+        "route",
+        "service",
+        "sidewalk",
+        "shop",
+        "sport",
+        "surface",
+        "toll",
+        "tourism",
+        "tower:type",
+        "tracktype",
+        "tunnel",
+        "water",
+        "waterway",
+        "wetland",
+        "width",
+        "wood",
+        "z_order",
+        "way_area",
+        "abandoned:aeroway",
+        "abandoned:amenity",
+        "abandoned:building",
+        "abandoned:landuse",
+        "abandoned:power",
+        "area:highway",
+        "tags",
+        "geom",
+        "id"
+      ],
+      "estimated_row_count": 17209092
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_nodes",
+      "column_count": 3,
+      "columns": [
+        "id",
+        "lat",
+        "lon"
+      ],
+      "estimated_row_count": 355786048
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_point",
+      "column_count": 73,
+      "columns": [
+        "osm_id",
+        "access",
+        "addr:housename",
+        "addr:housenumber",
+        "addr:interpolation",
+        "admin_level",
+        "aerialway",
+        "aeroway",
+        "amenity",
+        "area",
+        "barrier",
+        "bicycle",
+        "brand",
+        "bridge",
+        "boundary",
+        "building",
+        "capital",
+        "construction",
+        "covered",
+        "culvert",
+        "cutting",
+        "denomination",
+        "disused",
+        "ele",
+        "embankment",
+        "foot",
+        "generator:source",
+        "harbour",
+        "highway",
+        "historic",
+        "horse",
+        "intermittent",
+        "junction",
+        "landuse",
+        "layer",
+        "leisure",
+        "line",
+        "lock",
+        "man_made",
+        "military",
+        "motorcar",
+        "name",
+        "natural",
+        "office",
+        "oneway",
+        "operator",
+        "place",
+        "population",
+        "power",
+        "power_source",
+        "public_transport",
+        "railway",
+        "ref",
+        "religion",
+        "route",
+        "service",
+        "sidewalk",
+        "shop",
+        "sport",
+        "surface",
+        "toll",
+        "tourism",
+        "tower:type",
+        "tunnel",
+        "water",
+        "waterway",
+        "wetland",
+        "width",
+        "wood",
+        "z_order",
+        "tags",
+        "geom",
+        "id"
+      ],
+      "estimated_row_count": 14452625
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_polygon",
+      "column_count": 79,
+      "columns": [
+        "osm_id",
+        "access",
+        "addr:housename",
+        "addr:housenumber",
+        "addr:interpolation",
+        "admin_level",
+        "aerialway",
+        "aeroway",
+        "amenity",
+        "area",
+        "barrier",
+        "bicycle",
+        "brand",
+        "bridge",
+        "boundary",
+        "building",
+        "construction",
+        "covered",
+        "culvert",
+        "cutting",
+        "denomination",
+        "disused",
+        "embankment",
+        "foot",
+        "generator:source",
+        "harbour",
+        "highway",
+        "historic",
+        "horse",
+        "intermittent",
+        "junction",
+        "landuse",
+        "layer",
+        "leisure",
+        "line",
+        "lock",
+        "man_made",
+        "military",
+        "motorcar",
+        "name",
+        "natural",
+        "office",
+        "oneway",
+        "operator",
+        "place",
+        "population",
+        "power",
+        "power_source",
+        "public_transport",
+        "railway",
+        "ref",
+        "religion",
+        "route",
+        "service",
+        "sidewalk",
+        "shop",
+        "sport",
+        "surface",
+        "toll",
+        "tourism",
+        "tower:type",
+        "tracktype",
+        "tunnel",
+        "water",
+        "waterway",
+        "wetland",
+        "width",
+        "wood",
+        "z_order",
+        "way_area",
+        "abandoned:aeroway",
+        "abandoned:amenity",
+        "abandoned:building",
+        "abandoned:landuse",
+        "abandoned:power",
+        "area:highway",
+        "tags",
+        "geom",
+        "id"
+      ],
+      "estimated_row_count": 41381304
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_rels",
+      "column_count": 6,
+      "columns": [
+        "id",
+        "way_off",
+        "rel_off",
+        "parts",
+        "members",
+        "tags"
+      ],
+      "estimated_row_count": 722430
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_roads",
+      "column_count": 79,
+      "columns": [
+        "osm_id",
+        "access",
+        "addr:housename",
+        "addr:housenumber",
+        "addr:interpolation",
+        "admin_level",
+        "aerialway",
+        "aeroway",
+        "amenity",
+        "area",
+        "barrier",
+        "bicycle",
+        "brand",
+        "bridge",
+        "boundary",
+        "building",
+        "construction",
+        "covered",
+        "culvert",
+        "cutting",
+        "denomination",
+        "disused",
+        "embankment",
+        "foot",
+        "generator:source",
+        "harbour",
+        "highway",
+        "historic",
+        "horse",
+        "intermittent",
+        "junction",
+        "landuse",
+        "layer",
+        "leisure",
+        "line",
+        "lock",
+        "man_made",
+        "military",
+        "motorcar",
+        "name",
+        "natural",
+        "office",
+        "oneway",
+        "operator",
+        "place",
+        "population",
+        "power",
+        "power_source",
+        "public_transport",
+        "railway",
+        "ref",
+        "religion",
+        "route",
+        "service",
+        "sidewalk",
+        "shop",
+        "sport",
+        "surface",
+        "toll",
+        "tourism",
+        "tower:type",
+        "tracktype",
+        "tunnel",
+        "water",
+        "waterway",
+        "wetland",
+        "width",
+        "wood",
+        "z_order",
+        "way_area",
+        "abandoned:aeroway",
+        "abandoned:amenity",
+        "abandoned:building",
+        "abandoned:landuse",
+        "abandoned:power",
+        "area:highway",
+        "tags",
+        "geom",
+        "id"
+      ],
+      "estimated_row_count": 1291529
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_ways",
+      "column_count": 3,
+      "columns": [
+        "id",
+        "nodes",
+        "tags"
+      ],
+      "estimated_row_count": 58143620
+    },
+    {
+      "schema": "openstreetmap",
+      "table": "openstreetmap.osm_ways_with_segments",
+      "column_count": 5,
+      "columns": [
+        "osm_id",
+        "nodes",
+        "highway",
+        "geom",
+        "length_segments"
+      ],
+      "estimated_row_count": 6716196
+    },
+    {
+      "schema": "osmtgmod_results",
+      "table": "osmtgmod_results.branch_data",
+      "column_count": 20,
+      "columns": [
+        "result_id",
+        "view_id",
+        "branch_id",
+        "f_bus",
+        "t_bus",
+        "br_r",
+        "br_x",
+        "br_b",
+        "rate_a",
+        "rate_b",
+        "rate_c",
+        "tap",
+        "shift",
+        "br_status",
+        "link_type",
+        "branch_voltage",
+        "cables",
+        "frequency",
+        "geom",
+        "topo"
+      ],
+      "estimated_row_count": 23754
+    },
+    {
+      "schema": "osmtgmod_results",
+      "table": "osmtgmod_results.bus_data",
+      "column_count": 20,
+      "columns": [
+        "result_id",
+        "view_id",
+        "bus_i",
+        "bus_type",
+        "pd",
+        "qd",
+        "gs",
+        "bs",
+        "bus_area",
+        "vm",
+        "va",
+        "base_kv",
+        "zone",
+        "vmax",
+        "vmin",
+        "osm_substation_id",
+        "cntr_id",
+        "frequency",
+        "geom",
+        "osm_name"
+      ],
+      "estimated_row_count": 13127
+    },
+    {
+      "schema": "osmtgmod_results",
+      "table": "osmtgmod_results.dcline_data",
+      "column_count": 26,
+      "columns": [
+        "result_id",
+        "view_id",
+        "dcline_id",
+        "f_bus",
+        "t_bus",
+        "br_status",
+        "pf",
+        "pt",
+        "qf",
+        "qt",
+        "vf",
+        "vt",
+        "pmin",
+        "pmax",
+        "qminf",
+        "qmaxf",
+        "qmint",
+        "qmaxt",
+        "loss0",
+        "loss1",
+        "link_type",
+        "branch_voltage",
+        "cables",
+        "frequency",
+        "geom",
+        "topo"
+      ],
+      "estimated_row_count": 17
+    },
+    {
+      "schema": "osmtgmod_results",
+      "table": "osmtgmod_results.results_metadata",
+      "column_count": 6,
+      "columns": [
+        "id",
+        "osm_date",
+        "abstraction_date",
+        "applied_plans",
+        "applied_year",
+        "user_comment"
+      ],
+      "estimated_row_count": 1
+    },
+    {
+      "schema": "public",
+      "table": "public._db_status",
+      "column_count": 2,
+      "columns": [
+        "module",
+        "status"
+      ],
+      "estimated_row_count": -1
+    },
+    {
+      "schema": "public",
+      "table": "public.abstr_values",
+      "column_count": 4,
+      "columns": [
+        "val_id",
+        "val_description",
+        "val_int",
+        "val_bool"
+      ],
+      "estimated_row_count": 6
+    },
+    {
+      "schema": "public",
+      "table": "public.branch_data",
+      "column_count": 23,
+      "columns": [
+        "branch_id",
+        "relation_id",
+        "length",
+        "f_bus",
+        "t_bus",
+        "voltage",
+        "cables",
+        "wires",
+        "frequency",
+        "power",
+        "connected_via",
+        "transfer",
+        "line_ids",
+        "multiline",
+        "simple_geom",
+        "spec_id",
+        "br_r",
+        "br_x",
+        "br_b",
+        "s_long",
+        "tap",
+        "shift",
+        "numb_transformers"
+      ],
+      "estimated_row_count": 23754
+    },
+    {
+      "schema": "public",
+      "table": "public.branch_specifications",
+      "column_count": 11,
+      "columns": [
+        "spec_id",
+        "voltage_kv",
+        "power",
+        "al_mm2",
+        "stherm_mva",
+        "snat_mva",
+        "r_ohm_per_km",
+        "l_mh_per_km",
+        "g_ns_per_km",
+        "c_nf_per_km",
+        "zw_ohm"
+      ],
+      "estimated_row_count": 6
+    },
+    {
+      "schema": "public",
+      "table": "public.bus_data",
+      "column_count": 16,
+      "columns": [
+        "id",
+        "cnt",
+        "the_geom",
+        "voltage",
+        "frequency",
+        "substation_id",
+        "cntr_id",
+        "discovered",
+        "s_long_sum",
+        "bus_type",
+        "bus_area",
+        "zone",
+        "vm",
+        "va",
+        "pd",
+        "qd"
+      ],
+      "estimated_row_count": 13127
+    },
+    {
+      "schema": "public",
+      "table": "public.dcline_data",
+      "column_count": 18,
+      "columns": [
+        "branch_id",
+        "relation_id",
+        "length",
+        "f_bus",
+        "t_bus",
+        "voltage",
+        "cables",
+        "wires",
+        "frequency",
+        "power",
+        "connected_via",
+        "transfer",
+        "line_ids",
+        "multiline",
+        "simple_geom",
+        "spec_id",
+        "pmax",
+        "loss1"
+      ],
+      "estimated_row_count": -1
+    },
+    {
+      "schema": "public",
+      "table": "public.dcline_specifications",
+      "column_count": 5,
+      "columns": [
+        "spec_id",
+        "power",
+        "r_ohm_per_km",
+        "i_a_therm",
+        "leitertyp"
+      ],
+      "estimated_row_count": 2
+    },
+    {
+      "schema": "public",
+      "table": "public.debug",
+      "column_count": 8,
+      "columns": [
+        "step_before",
+        "max_bus_id",
+        "num_bus",
+        "max_branch_id",
+        "num_branch",
+        "num_110_bus",
+        "num_220_bus",
+        "num_380_bus"
+      ],
+      "estimated_row_count": 264
+    },
+    {
+      "schema": "public",
+      "table": "public.edit_power_relations",
+      "column_count": 8,
+      "columns": [
+        "id",
+        "voltage",
+        "cables",
+        "wires",
+        "circuits",
+        "frequency",
+        "members",
+        "st_union"
+      ],
+      "estimated_row_count": 3644
+    },
+    {
+      "schema": "public",
+      "table": "public.nodes",
+      "column_count": 7,
+      "columns": [
+        "id",
+        "version",
+        "user_id",
+        "tstamp",
+        "changeset_id",
+        "tags",
+        "geom"
+      ],
+      "estimated_row_count": 355929984
+    },
+    {
+      "schema": "public",
+      "table": "public.nuts_poly",
+      "column_count": 6,
+      "columns": [
+        "gid",
+        "nuts_id",
+        "stat_levl_",
+        "shape_area",
+        "shape_len",
+        "geom"
+      ],
+      "estimated_row_count": 1951
+    },
+    {
+      "schema": "public",
+      "table": "public.osm_metadata",
+      "column_count": 2,
+      "columns": [
+        "downloaded",
+        "imported"
+      ],
+      "estimated_row_count": -1
+    },
+    {
+      "schema": "public",
+      "table": "public.plz_poly",
+      "column_count": 3,
+      "columns": [
+        "gid",
+        "plz",
+        "geom"
+      ],
+      "estimated_row_count": 8690
+    },
+    {
+      "schema": "public",
+      "table": "public.power_circ_members",
+      "column_count": 12,
+      "columns": [
+        "relation_id",
+        "line_id",
+        "length",
+        "way",
+        "power",
+        "voltage",
+        "cables",
+        "wires",
+        "circuits",
+        "frequency",
+        "f_bus",
+        "t_bus"
+      ],
+      "estimated_row_count": 18318
+    },
+    {
+      "schema": "public",
+      "table": "public.power_circuits",
+      "column_count": 11,
+      "columns": [
+        "id",
+        "version",
+        "user_id",
+        "tstamp",
+        "changeset_id",
+        "members",
+        "voltage",
+        "cables",
+        "wires",
+        "circuits",
+        "frequency"
+      ],
+      "estimated_row_count": 2423
+    },
+    {
+      "schema": "public",
+      "table": "public.power_line",
+      "column_count": 25,
+      "columns": [
+        "id",
+        "version",
+        "user_id",
+        "tstamp",
+        "changeset_id",
+        "way",
+        "power",
+        "voltage",
+        "cables",
+        "wires",
+        "circuits",
+        "frequency",
+        "name",
+        "startpoint",
+        "endpoint",
+        "point_substation_id",
+        "numb_volt_lev",
+        "voltage_array",
+        "cables_sum",
+        "cables_array",
+        "wires_array",
+        "frequency_array",
+        "length",
+        "all_neighbours",
+        "cables_from_neighbour"
+      ],
+      "estimated_row_count": 22168
+    },
+    {
+      "schema": "public",
+      "table": "public.power_line_sep",
+      "column_count": 14,
+      "columns": [
+        "branch_id",
+        "relation_id",
+        "line_id",
+        "length",
+        "way",
+        "f_bus",
+        "t_bus",
+        "voltage",
+        "cables",
+        "wires",
+        "frequency",
+        "power",
+        "startpoint",
+        "endpoint"
+      ],
+      "estimated_row_count": 7852
+    },
+    {
+      "schema": "public",
+      "table": "public.power_relations",
+      "column_count": 11,
+      "columns": [
+        "id",
+        "version",
+        "user_id",
+        "tstamp",
+        "changeset_id",
+        "voltage",
+        "cables",
+        "wires",
+        "circuits",
+        "frequency",
+        "members"
+      ],
+      "estimated_row_count": 3644
+    },
+    {
+      "schema": "public",
+      "table": "public.power_substation",
+      "column_count": 15,
+      "columns": [
+        "id",
+        "version",
+        "user_id",
+        "tstamp",
+        "changeset_id",
+        "power",
+        "voltage",
+        "cables",
+        "wires",
+        "circuits",
+        "frequency",
+        "name",
+        "poly",
+        "s_long",
+        "center_geom"
+      ],
+      "estimated_row_count": 4464
+    },
+    {
+      "schema": "public",
+      "table": "public.power_ways",
+      "column_count": 13,
+      "columns": [
+        "id",
+        "version",
+        "user_id",
+        "tstamp",
+        "changeset_id",
+        "way",
+        "power",
+        "voltage",
+        "cables",
+        "wires",
+        "circuits",
+        "frequency",
+        "name"
+      ],
+      "estimated_row_count": 226078
+    },
+    {
+      "schema": "public",
+      "table": "public.problem_log",
+      "column_count": 9,
+      "columns": [
+        "object_type",
+        "line_id",
+        "relation_id",
+        "way",
+        "voltage",
+        "cables",
+        "wires",
+        "frequency",
+        "problem"
+      ],
+      "estimated_row_count": 5497
+    },
+    {
+      "schema": "public",
+      "table": "public.relation_members",
+      "column_count": 5,
+      "columns": [
+        "relation_id",
+        "member_id",
+        "member_type",
+        "member_role",
+        "sequence_id"
+      ],
+      "estimated_row_count": 15896951
+    },
+    {
+      "schema": "public",
+      "table": "public.relations",
+      "column_count": 6,
+      "columns": [
+        "id",
+        "version",
+        "user_id",
+        "tstamp",
+        "changeset_id",
+        "tags"
+      ],
+      "estimated_row_count": 722430
+    },
+    {
+      "schema": "public",
+      "table": "public.schema_info",
+      "column_count": 1,
+      "columns": [
+        "version"
+      ],
+      "estimated_row_count": 1
+    },
+    {
+      "schema": "public",
+      "table": "public.spatial_ref_sys",
+      "column_count": 5,
+      "columns": [
+        "srid",
+        "auth_name",
+        "auth_srid",
+        "srtext",
+        "proj4text"
+      ],
+      "estimated_row_count": 8500
+    },
+    {
+      "schema": "public",
+      "table": "public.transfer_busses",
+      "column_count": 3,
+      "columns": [
+        "osm_id",
+        "object_type",
+        "center_geom"
+      ],
+      "estimated_row_count": 4095
+    },
+    {
+      "schema": "public",
+      "table": "public.transfer_busses_complete",
+      "column_count": 16,
+      "columns": [
+        "bus_id",
+        "lon",
+        "lat",
+        "point",
+        "polygon",
+        "voltage",
+        "power_type",
+        "substation",
+        "osm_id",
+        "osm_www",
+        "frequency",
+        "subst_name",
+        "ref",
+        "operator",
+        "dbahn",
+        "status"
+      ],
+      "estimated_row_count": 4095
+    },
+    {
+      "schema": "public",
+      "table": "public.transfer_busses_connect",
+      "column_count": 3,
+      "columns": [
+        "osm_id",
+        "object_type",
+        "center_geom"
+      ],
+      "estimated_row_count": -1
+    },
+    {
+      "schema": "public",
+      "table": "public.transfer_busses_connect_all",
+      "column_count": 3,
+      "columns": [
+        "osm_id",
+        "object_type",
+        "center_geom"
+      ],
+      "estimated_row_count": 482
+    },
+    {
+      "schema": "public",
+      "table": "public.transformer_specifications",
+      "column_count": 5,
+      "columns": [
+        "spec_id",
+        "s_mva",
+        "u_os",
+        "u_us",
+        "u_kr"
+      ],
+      "estimated_row_count": 3
+    },
+    {
+      "schema": "public",
+      "table": "public.users",
+      "column_count": 2,
+      "columns": [
+        "id",
+        "name"
+      ],
+      "estimated_row_count": 1
+    },
+    {
+      "schema": "public",
+      "table": "public.way_nodes",
+      "column_count": 3,
+      "columns": [
+        "way_id",
+        "node_id",
+        "sequence_id"
+      ],
+      "estimated_row_count": 481698624
+    },
+    {
+      "schema": "public",
+      "table": "public.ways",
+      "column_count": 7,
+      "columns": [
+        "id",
+        "version",
+        "user_id",
+        "tstamp",
+        "changeset_id",
+        "tags",
+        "nodes"
+      ],
+      "estimated_row_count": 58167960
+    },
+    {
+      "schema": "scenario",
+      "table": "scenario.egon_scenario_parameters",
+      "column_count": 7,
+      "columns": [
+        "name",
+        "global_parameters",
+        "electricity_parameters",
+        "gas_parameters",
+        "heat_parameters",
+        "mobility_parameters",
+        "description"
+      ],
+      "estimated_row_count": 3
+    },
+    {
+      "schema": "society",
+      "table": "society.destatis_zensus_population_per_ha",
+      "column_count": 7,
+      "columns": [
+        "id",
+        "grid_id",
+        "x_mp",
+        "y_mp",
+        "population",
+        "geom_point",
+        "geom"
+      ],
+      "estimated_row_count": 35783888
+    },
+    {
+      "schema": "society",
+      "table": "society.destatis_zensus_population_per_ha_inside_germany",
+      "column_count": 5,
+      "columns": [
+        "id",
+        "grid_id",
+        "population",
+        "geom_point",
+        "geom"
+      ],
+      "estimated_row_count": 3177723
+    },
+    {
+      "schema": "society",
+      "table": "society.egon_demandregio_household",
+      "column_count": 4,
+      "columns": [
+        "nuts3",
+        "hh_size",
+        "year",
+        "households"
+      ],
+      "estimated_row_count": 9624
+    },
+    {
+      "schema": "society",
+      "table": "society.egon_demandregio_population",
+      "column_count": 3,
+      "columns": [
+        "nuts3",
+        "year",
+        "population"
+      ],
+      "estimated_row_count": 1604
+    },
+    {
+      "schema": "society",
+      "table": "society.egon_destatis_zensus_apartment_building_population_per_ha",
+      "column_count": 7,
+      "columns": [
+        "grid_id",
+        "zensus_population_id",
+        "building_count",
+        "apartment_count",
+        "population",
+        "geom",
+        "geom_point"
+      ],
+      "estimated_row_count": 3206490
+    },
+    {
+      "schema": "society",
+      "table": "society.egon_destatis_zensus_apartment_per_ha",
+      "column_count": 9,
+      "columns": [
+        "id",
+        "grid_id",
+        "grid_id_new",
+        "attribute",
+        "characteristics_code",
+        "characteristics_text",
+        "quantity",
+        "quantity_q",
+        "zensus_population_id"
+      ],
+      "estimated_row_count": 51089248
+    },
+    {
+      "schema": "society",
+      "table": "society.egon_destatis_zensus_building_per_ha",
+      "column_count": 9,
+      "columns": [
+        "id",
+        "grid_id",
+        "grid_id_new",
+        "attribute",
+        "characteristics_code",
+        "characteristics_text",
+        "quantity",
+        "quantity_q",
+        "zensus_population_id"
+      ],
+      "estimated_row_count": 24295324
+    },
+    {
+      "schema": "society",
+      "table": "society.egon_destatis_zensus_household_per_ha",
+      "column_count": 9,
+      "columns": [
+        "id",
+        "grid_id",
+        "grid_id_new",
+        "attribute",
+        "characteristics_code",
+        "characteristics_text",
+        "quantity",
+        "quantity_q",
+        "zensus_population_id"
+      ],
+      "estimated_row_count": 18787904
+    },
+    {
+      "schema": "society",
+      "table": "society.egon_destatis_zensus_household_per_ha_refined",
+      "column_count": 9,
+      "columns": [
+        "id",
+        "cell_id",
+        "grid_id",
+        "nuts3",
+        "nuts1",
+        "characteristics_code",
+        "hh_5types",
+        "hh_type",
+        "hh_10types"
+      ],
+      "estimated_row_count": 13304814
+    },
+    {
+      "schema": "society",
+      "table": "society.egon_household_prognosis",
+      "column_count": 3,
+      "columns": [
+        "zensus_population_id",
+        "year",
+        "households"
+      ],
+      "estimated_row_count": 5319490
+    },
+    {
+      "schema": "society",
+      "table": "society.egon_population_prognosis",
+      "column_count": 3,
+      "columns": [
+        "zensus_population_id",
+        "year",
+        "population"
+      ],
+      "estimated_row_count": 6354404
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_chp_plants",
+      "column_count": 13,
+      "columns": [
+        "id",
+        "sources",
+        "source_id",
+        "carrier",
+        "district_heating",
+        "el_capacity",
+        "th_capacity",
+        "electrical_bus_id",
+        "district_heating_area_id",
+        "ch4_bus_id",
+        "voltage_level",
+        "scenario",
+        "geom"
+      ],
+      "estimated_row_count": 40197
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_district_heating",
+      "column_count": 7,
+      "columns": [
+        "index",
+        "district_heating_id",
+        "carrier",
+        "category",
+        "capacity",
+        "geometry",
+        "scenario"
+      ],
+      "estimated_row_count": 9090
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_era5_renewable_feedin",
+      "column_count": 4,
+      "columns": [
+        "w_id",
+        "weather_year",
+        "carrier",
+        "feedin"
+      ],
+      "estimated_row_count": 6102
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_era5_weather_cells",
+      "column_count": 3,
+      "columns": [
+        "w_id",
+        "geom",
+        "geom_point"
+      ],
+      "estimated_row_count": 29673
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_home_batteries",
+      "column_count": 6,
+      "columns": [
+        "index",
+        "scenario",
+        "bus_id",
+        "building_id",
+        "p_nom",
+        "capacity"
+      ],
+      "estimated_row_count": 6880106
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_individual_heating",
+      "column_count": 7,
+      "columns": [
+        "index",
+        "mv_grid_id",
+        "carrier",
+        "category",
+        "capacity",
+        "geometry",
+        "scenario"
+      ],
+      "estimated_row_count": 7692
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_mastr_conventional_without_chp",
+      "column_count": 7,
+      "columns": [
+        "EinheitMastrNummer",
+        "el_capacity",
+        "geometry",
+        "carrier",
+        "plz",
+        "city",
+        "federal_state"
+      ],
+      "estimated_row_count": 7338
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_mastr_geocoded",
+      "column_count": 6,
+      "columns": [
+        "index",
+        "zip_and_municipality",
+        "latitude",
+        "longitude",
+        "altitude",
+        "geometry"
+      ],
+      "estimated_row_count": 15237
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_nep_2021_conventional_powerplants",
+      "column_count": 21,
+      "columns": [
+        "index",
+        "bnetza_id",
+        "name",
+        "name_unit",
+        "carrier_nep",
+        "chp",
+        "postcode",
+        "city",
+        "federal_state",
+        "commissioned",
+        "status",
+        "capacity",
+        "a2035_chp",
+        "a2035_capacity",
+        "b2035_chp",
+        "b2035_capacity",
+        "c2035_chp",
+        "c2035_capacity",
+        "b2040_chp",
+        "b2040_capacity",
+        "carrier"
+      ],
+      "estimated_row_count": 737
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_power_plants",
+      "column_count": 10,
+      "columns": [
+        "id",
+        "sources",
+        "source_id",
+        "carrier",
+        "el_capacity",
+        "bus_id",
+        "voltage_level",
+        "weather_cell_id",
+        "scenario",
+        "geom"
+      ],
+      "estimated_row_count": 34928
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_power_plants_biomass",
+      "column_count": 20,
+      "columns": [
+        "id",
+        "bus_id",
+        "gens_id",
+        "status",
+        "commissioning_date",
+        "postcode",
+        "city",
+        "municipality",
+        "federal_state",
+        "zip_and_municipality",
+        "technology",
+        "main_fuel",
+        "fuel_type",
+        "capacity",
+        "th_capacity",
+        "feedin_type",
+        "voltage_level",
+        "voltage_level_inferred",
+        "geometry_geocoded",
+        "geom"
+      ],
+      "estimated_row_count": 20710
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_power_plants_combustion",
+      "column_count": 21,
+      "columns": [
+        "gens_id",
+        "federal_state",
+        "municipality",
+        "postcode",
+        "city",
+        "commissioning_date",
+        "status",
+        "carrier",
+        "capacity",
+        "feedin_type",
+        "main_fuel",
+        "other_main_fuel",
+        "technology",
+        "th_capacity",
+        "voltage_level",
+        "voltage_level_inferred",
+        "geom",
+        "geometry_geocoded",
+        "zip_and_municipality",
+        "id",
+        "bus_id"
+      ],
+      "estimated_row_count": 75072
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_power_plants_gsgk",
+      "column_count": 18,
+      "columns": [
+        "gens_id",
+        "federal_state",
+        "municipality",
+        "postcode",
+        "city",
+        "commissioning_date",
+        "status",
+        "carrier",
+        "capacity",
+        "feedin_type",
+        "technology",
+        "voltage_level",
+        "voltage_level_inferred",
+        "geom",
+        "geometry_geocoded",
+        "zip_and_municipality",
+        "id",
+        "bus_id"
+      ],
+      "estimated_row_count": 418
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_power_plants_hydro",
+      "column_count": 18,
+      "columns": [
+        "id",
+        "bus_id",
+        "gens_id",
+        "status",
+        "commissioning_date",
+        "postcode",
+        "city",
+        "municipality",
+        "federal_state",
+        "zip_and_municipality",
+        "plant_type",
+        "water_origin",
+        "capacity",
+        "feedin_type",
+        "voltage_level",
+        "voltage_level_inferred",
+        "geometry_geocoded",
+        "geom"
+      ],
+      "estimated_row_count": 8435
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_power_plants_nuclear",
+      "column_count": 18,
+      "columns": [
+        "gens_id",
+        "federal_state",
+        "municipality",
+        "postcode",
+        "city",
+        "commissioning_date",
+        "status",
+        "carrier",
+        "capacity",
+        "feedin_type",
+        "technology",
+        "voltage_level",
+        "voltage_level_inferred",
+        "geom",
+        "geometry_geocoded",
+        "zip_and_municipality",
+        "id",
+        "bus_id"
+      ],
+      "estimated_row_count": 3
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_power_plants_pv",
+      "column_count": 26,
+      "columns": [
+        "id",
+        "bus_id",
+        "gens_id",
+        "status",
+        "commissioning_date",
+        "postcode",
+        "city",
+        "municipality",
+        "federal_state",
+        "site",
+        "zip_and_municipality",
+        "site_type",
+        "usage_sector",
+        "orientation_primary",
+        "orientation_primary_angle",
+        "orientation_secondary",
+        "orientation_secondary_angle",
+        "orientation_uniform",
+        "module_count",
+        "capacity",
+        "capacity_inverter",
+        "feedin_type",
+        "voltage_level",
+        "voltage_level_inferred",
+        "geometry_geocoded",
+        "geom"
+      ],
+      "estimated_row_count": 2249381
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_power_plants_pv_roof_building",
+      "column_count": 11,
+      "columns": [
+        "index",
+        "scenario",
+        "bus_id",
+        "building_id",
+        "gens_id",
+        "capacity",
+        "orientation_uniform",
+        "orientation_primary",
+        "orientation_primary_angle",
+        "voltage_level",
+        "weather_cell_id"
+      ],
+      "estimated_row_count": 14005579
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_power_plants_storage",
+      "column_count": 20,
+      "columns": [
+        "gens_id",
+        "federal_state",
+        "municipality",
+        "postcode",
+        "city",
+        "commissioning_date",
+        "status",
+        "carrier",
+        "capacity",
+        "feedin_type",
+        "battery_type",
+        "pump_storage_type",
+        "technology",
+        "voltage_level",
+        "voltage_level_inferred",
+        "geom",
+        "geometry_geocoded",
+        "zip_and_municipality",
+        "id",
+        "bus_id"
+      ],
+      "estimated_row_count": 334952
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_power_plants_wind",
+      "column_count": 21,
+      "columns": [
+        "id",
+        "bus_id",
+        "gens_id",
+        "status",
+        "commissioning_date",
+        "postcode",
+        "city",
+        "municipality",
+        "federal_state",
+        "zip_and_municipality",
+        "site_type",
+        "manufacturer_name",
+        "type_name",
+        "hub_height",
+        "rotor_diameter",
+        "capacity",
+        "feedin_type",
+        "voltage_level",
+        "voltage_level_inferred",
+        "geometry_geocoded",
+        "geom"
+      ],
+      "estimated_row_count": 28851
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_re_potential_area_pv_agriculture",
+      "column_count": 2,
+      "columns": [
+        "id",
+        "geom"
+      ],
+      "estimated_row_count": 8259
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_re_potential_area_pv_road_railway",
+      "column_count": 2,
+      "columns": [
+        "id",
+        "geom"
+      ],
+      "estimated_row_count": 5159
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_re_potential_area_wind",
+      "column_count": 2,
+      "columns": [
+        "id",
+        "geom"
+      ],
+      "estimated_row_count": 120268
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_scenario_capacities",
+      "column_count": 6,
+      "columns": [
+        "index",
+        "component",
+        "carrier",
+        "capacity",
+        "nuts",
+        "scenario_name"
+      ],
+      "estimated_row_count": 236
+    },
+    {
+      "schema": "supply",
+      "table": "supply.egon_storages",
+      "column_count": 9,
+      "columns": [
+        "id",
+        "sources",
+        "source_id",
+        "carrier",
+        "el_capacity",
+        "bus_id",
+        "voltage_level",
+        "scenario",
+        "geom"
+      ],
+      "estimated_row_count": 7748
+    }
+  ]
+}

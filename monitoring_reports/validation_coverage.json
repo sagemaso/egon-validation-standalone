@@ -1,0 +1,324 @@
+{
+  "analysis_timestamp": "2025-07-09T13:25:23.660566",
+  "total_discovered_tables": 198,
+  "covered_tables": 7,
+  "uncovered_tables": 191,
+  "total_columns": 2167,
+  "covered_columns": 10,
+  "coverage_percentage": 0.46146746654360865,
+  "covered_table_list": [
+    "demand.egon_demandregio_hh",
+    "grid.egon_etrago_bus",
+    "grid.egon_etrago_generator_timeseries",
+    "grid.egon_etrago_line_timeseries",
+    "grid.egon_etrago_link_timeseries",
+    "grid.egon_etrago_load_timeseries",
+    "supply.egon_power_plants"
+  ],
+  "uncovered_table_list": [
+    "boundaries.egon_map_grid_districts_bus_ids",
+    "boundaries.egon_map_mvgriddistrict_vg250",
+    "boundaries.egon_map_zensus_buildings_filtered",
+    "boundaries.egon_map_zensus_buildings_filtered_all",
+    "boundaries.egon_map_zensus_buildings_residential",
+    "boundaries.egon_map_zensus_climate_zones",
+    "boundaries.egon_map_zensus_grid_districts",
+    "boundaries.egon_map_zensus_mvgd_buildings",
+    "boundaries.egon_map_zensus_vg250",
+    "boundaries.egon_map_zensus_weather_cell",
+    "boundaries.inspee_saltstructures",
+    "boundaries.vg250_gem",
+    "boundaries.vg250_gem_clean",
+    "boundaries.vg250_gem_population",
+    "boundaries.vg250_krs",
+    "boundaries.vg250_lan",
+    "boundaries.vg250_rbz",
+    "boundaries.vg250_sta",
+    "boundaries.vg250_vwg",
+    "demand.egon_building_electricity_peak_loads",
+    "demand.egon_building_heat_peak_loads",
+    "demand.egon_cts_electricity_demand_building_share",
+    "demand.egon_cts_heat_demand_building_share",
+    "demand.egon_daily_heat_demand_per_climate_zone",
+    "demand.egon_demandregio_cts_ind",
+    "demand.egon_demandregio_osm_ind_electricity",
+    "demand.egon_demandregio_sites_ind_electricity",
+    "demand.egon_demandregio_sites_ind_electricity_dsm_timeseries",
+    "demand.egon_demandregio_timeseries_cts_ind",
+    "demand.egon_demandregio_wz",
+    "demand.egon_demandregio_zensus_electricity",
+    "demand.egon_district_heating_areas",
+    "demand.egon_etrago_electricity_cts",
+    "demand.egon_etrago_electricity_cts_dsm_timeseries",
+    "demand.egon_etrago_electricity_households",
+    "demand.egon_etrago_heat_cts",
+    "demand.egon_etrago_timeseries_individual_heating",
+    "demand.egon_ev_count_municipality",
+    "demand.egon_ev_count_mv_grid_district",
+    "demand.egon_ev_count_registration_district",
+    "demand.egon_ev_metadata",
+    "demand.egon_ev_mv_grid_district",
+    "demand.egon_ev_pool",
+    "demand.egon_ev_trip",
+    "demand.egon_heat_idp_pool",
+    "demand.egon_heat_timeseries_selected_profiles",
+    "demand.egon_heavy_duty_transport_voronoi",
+    "demand.egon_hotmaps_industrial_sites",
+    "demand.egon_household_electricity_profile_in_census_cell",
+    "demand.egon_household_electricity_profile_of_buildings",
+    "demand.egon_hp_capacity_buildings",
+    "demand.egon_industrial_sites",
+    "demand.egon_loadarea",
+    "demand.egon_map_zensus_district_heating_areas",
+    "demand.egon_osm_ind_load_curves",
+    "demand.egon_osm_ind_load_curves_individual",
+    "demand.egon_osm_ind_load_curves_individual_dsm_timeseries",
+    "demand.egon_peta_heat",
+    "demand.egon_schmidt_industrial_sites",
+    "demand.egon_seenergies_industrial_sites",
+    "demand.egon_sites_ind_load_curves",
+    "demand.egon_sites_ind_load_curves_individual",
+    "demand.egon_sites_ind_load_curves_individual_dsm_timeseries",
+    "demand.egon_timeseries_district_heating",
+    "demand.iee_household_load_profiles",
+    "grid.egon_ehv_substation",
+    "grid.egon_ehv_substation_voronoi",
+    "grid.egon_ehv_transfer_buses",
+    "grid.egon_emob_charging_infrastructure",
+    "grid.egon_etrago_ac_h2",
+    "grid.egon_etrago_bus_timeseries",
+    "grid.egon_etrago_carrier",
+    "grid.egon_etrago_ch4_h2",
+    "grid.egon_etrago_extension_bus",
+    "grid.egon_etrago_extension_line",
+    "grid.egon_etrago_extension_link",
+    "grid.egon_etrago_extension_transformer",
+    "grid.egon_etrago_generator",
+    "grid.egon_etrago_hv_busmap",
+    "grid.egon_etrago_line",
+    "grid.egon_etrago_link",
+    "grid.egon_etrago_load",
+    "grid.egon_etrago_storage",
+    "grid.egon_etrago_storage_timeseries",
+    "grid.egon_etrago_store",
+    "grid.egon_etrago_store_timeseries",
+    "grid.egon_etrago_temp_resolution",
+    "grid.egon_etrago_transformer",
+    "grid.egon_etrago_transformer_timeseries",
+    "grid.egon_gas_voronoi",
+    "grid.egon_hvmv_substation",
+    "grid.egon_hvmv_substation.point",
+    "grid.egon_hvmv_substation_voronoi",
+    "grid.egon_hvmv_transfer_buses",
+    "grid.egon_mv_grid_district",
+    "grid.egon_saltstructures_storage_potential",
+    "metadata.datasets",
+    "metadata.dependency_graph",
+    "openstreetmap.egon_cts_buildings",
+    "openstreetmap.osm_amenities_in_buildings_filtered",
+    "openstreetmap.osm_amenities_not_in_buildings",
+    "openstreetmap.osm_amenities_not_in_buildings_filtered",
+    "openstreetmap.osm_amenities_shops_filtered",
+    "openstreetmap.osm_buildings",
+    "openstreetmap.osm_buildings_filtered",
+    "openstreetmap.osm_buildings_filtered_with_amenities",
+    "openstreetmap.osm_buildings_residential",
+    "openstreetmap.osm_buildings_synthetic",
+    "openstreetmap.osm_buildings_with_amenities",
+    "openstreetmap.osm_buildings_without_amenities",
+    "openstreetmap.osm_landuse",
+    "openstreetmap.osm_line",
+    "openstreetmap.osm_nodes",
+    "openstreetmap.osm_point",
+    "openstreetmap.osm_polygon",
+    "openstreetmap.osm_rels",
+    "openstreetmap.osm_roads",
+    "openstreetmap.osm_ways",
+    "openstreetmap.osm_ways_with_segments",
+    "osmtgmod_results.branch_data",
+    "osmtgmod_results.bus_data",
+    "osmtgmod_results.dcline_data",
+    "osmtgmod_results.results_metadata",
+    "public._db_status",
+    "public.abstr_values",
+    "public.branch_data",
+    "public.branch_specifications",
+    "public.bus_data",
+    "public.dcline_data",
+    "public.dcline_specifications",
+    "public.debug",
+    "public.edit_power_relations",
+    "public.nodes",
+    "public.nuts_poly",
+    "public.osm_metadata",
+    "public.plz_poly",
+    "public.power_circ_members",
+    "public.power_circuits",
+    "public.power_line",
+    "public.power_line_sep",
+    "public.power_relations",
+    "public.power_substation",
+    "public.power_ways",
+    "public.problem_log",
+    "public.relation_members",
+    "public.relations",
+    "public.schema_info",
+    "public.spatial_ref_sys",
+    "public.transfer_busses",
+    "public.transfer_busses_complete",
+    "public.transfer_busses_connect",
+    "public.transfer_busses_connect_all",
+    "public.transformer_specifications",
+    "public.users",
+    "public.way_nodes",
+    "public.ways",
+    "scenario.egon_scenario_parameters",
+    "society.destatis_zensus_population_per_ha",
+    "society.destatis_zensus_population_per_ha_inside_germany",
+    "society.egon_demandregio_household",
+    "society.egon_demandregio_population",
+    "society.egon_destatis_zensus_apartment_building_population_per_ha",
+    "society.egon_destatis_zensus_apartment_per_ha",
+    "society.egon_destatis_zensus_building_per_ha",
+    "society.egon_destatis_zensus_household_per_ha",
+    "society.egon_destatis_zensus_household_per_ha_refined",
+    "society.egon_household_prognosis",
+    "society.egon_population_prognosis",
+    "supply.egon_chp_plants",
+    "supply.egon_district_heating",
+    "supply.egon_era5_renewable_feedin",
+    "supply.egon_era5_weather_cells",
+    "supply.egon_home_batteries",
+    "supply.egon_individual_heating",
+    "supply.egon_mastr_conventional_without_chp",
+    "supply.egon_mastr_geocoded",
+    "supply.egon_nep_2021_conventional_powerplants",
+    "supply.egon_power_plants_biomass",
+    "supply.egon_power_plants_combustion",
+    "supply.egon_power_plants_gsgk",
+    "supply.egon_power_plants_hydro",
+    "supply.egon_power_plants_nuclear",
+    "supply.egon_power_plants_pv",
+    "supply.egon_power_plants_pv_roof_building",
+    "supply.egon_power_plants_storage",
+    "supply.egon_power_plants_wind",
+    "supply.egon_re_potential_area_pv_agriculture",
+    "supply.egon_re_potential_area_pv_road_railway",
+    "supply.egon_re_potential_area_wind",
+    "supply.egon_scenario_capacities",
+    "supply.egon_storages"
+  ],
+  "validation_details": [
+    {
+      "table": "demand.egon_demandregio_hh",
+      "column": "demand",
+      "validation_types": [
+        "NullCheckRule"
+      ],
+      "configurations": [
+        "comprehensive",
+        "critical_only",
+        "null_checks_only",
+        "quick_check"
+      ]
+    },
+    {
+      "table": "demand.egon_demandregio_hh",
+      "column": "nuts3",
+      "validation_types": [
+        "NullCheckRule"
+      ],
+      "configurations": [
+        "comprehensive",
+        "null_checks_only"
+      ]
+    },
+    {
+      "table": "supply.egon_power_plants",
+      "column": "el_capacity",
+      "validation_types": [
+        "NullCheckRule"
+      ],
+      "configurations": [
+        "comprehensive",
+        "critical_only",
+        "null_checks_only"
+      ]
+    },
+    {
+      "table": "supply.egon_power_plants",
+      "column": "carrier",
+      "validation_types": [
+        "NullCheckRule"
+      ],
+      "configurations": [
+        "comprehensive",
+        "null_checks_only"
+      ]
+    },
+    {
+      "table": "grid.egon_etrago_load_timeseries",
+      "column": "p_set",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive",
+        "critical_only",
+        "time_series_only"
+      ]
+    },
+    {
+      "table": "grid.egon_etrago_generator_timeseries",
+      "column": "p_max_pu",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive",
+        "time_series_only"
+      ]
+    },
+    {
+      "table": "grid.egon_etrago_link_timeseries",
+      "column": "p_min_pu",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive",
+        "time_series_only"
+      ]
+    },
+    {
+      "table": "grid.egon_etrago_line_timeseries",
+      "column": "s_max_pu",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "time_series_only"
+      ]
+    },
+    {
+      "table": "demand.egon_demandregio_hh",
+      "column": "scenario",
+      "validation_types": [
+        "NullCheckRule"
+      ],
+      "configurations": [
+        "null_checks_only"
+      ]
+    },
+    {
+      "table": "grid.egon_etrago_bus",
+      "column": "carrier",
+      "validation_types": [
+        "NullCheckRule"
+      ],
+      "configurations": [
+        "null_checks_only"
+      ]
+    }
+  ]
+}
