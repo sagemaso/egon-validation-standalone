@@ -1,4 +1,5 @@
 from src.rules.formal.null_check_rule import NullCheckRule
+from src.rules.formal.nan_check_rule import NanCheckRule
 from src.rules.formal.time_series_rule import TimeSeriesValidationRule
 
 # ==========================
@@ -16,8 +17,19 @@ VALIDATION_CONFIGURATIONS = {
                 "config": [
                     {"table": "demand.egon_demandregio_hh", "column": "demand"},
                     {"table": "demand.egon_demandregio_hh", "column": "nuts3"},
+                    {"table": "demand.egon_demandregio_hh", "column": "scenario"},
                     {"table": "supply.egon_power_plants", "column": "el_capacity"},
-                    {"table": "supply.egon_power_plants", "column": "carrier"}
+                    {"table": "supply.egon_power_plants", "column": "carrier"},
+                    {"table": "grid.egon_etrago_bus", "column": "carrier"}
+                ]
+            },
+            {
+                "name": "critical_nan_checks",
+                "rule_class": NanCheckRule,
+                "config": [
+                    {"table": "demand.egon_demandregio_hh", "column": "demand"},
+                    {"table": "supply.egon_power_plants", "column": "el_capacity"},
+                    {"table": "grid.egon_etrago_load_timeseries", "column": "p_set"}
                 ]
             },
             {
@@ -105,7 +117,7 @@ VALIDATION_CONFIGURATIONS = {
         "rules": [
             {
                 "name": "basic_null_check",
-                "rule_class": NullCheckRule,
+                "rule_class": NanCheckRule,
                 "config": [
                     {"table": "demand.egon_demandregio_hh", "column": "demand"}
                 ]
