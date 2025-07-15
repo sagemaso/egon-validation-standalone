@@ -36,7 +36,6 @@ class NullCheckRule(BatchValidationRule):
             COUNT(*) as total_rows,
             COUNT(CASE WHEN {column} IS NULL THEN 1 END) as null_count
         FROM {table}
-        LIMIT 10000
         """
 
         try:
