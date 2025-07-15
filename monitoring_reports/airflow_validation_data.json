@@ -10,11 +10,6 @@
         "null_check": {
           "equal_to": 0
         }
-      },
-      "scenario": {
-        "null_check": {
-          "equal_to": 0
-        }
       }
     },
     "supply.egon_power_plants": {
@@ -36,15 +31,71 @@
         }
       }
     },
-    "grid.egon_etrago_generator_timeseries": {
-      "p_max_pu": {
+    "demand.egon_demandregio_sites_ind_electricity_dsm_timeseries": {
+      "p_mset": {
         "custom_time_series": {
           "description": "Time series length validation"
         }
       }
     },
-    "grid.egon_etrago_link_timeseries": {
-      "p_min_pu": {
+    "demand.egon_demandregio_timeseries_cts_ind": {
+      "load_curve": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "demand.egon_etrago_electricity_cts_dsm_timeseries": {
+      "p_set": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "demand.egon_etrago_timeseries_individual_heating": {
+      "dist_aggregated_mw": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "demand.egon_heat_timeseries_selected_profiles": {
+      "selected_idp_profiles": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "demand.egon_osm_ind_load_curves_individual_dsm_timeseries": {
+      "p_set": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "demand.egon_sites_ind_load_curves_individual_dsm_timeseries": {
+      "p_set": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "demand.egon_timeseries_district_heating": {
+      "dist_aggregated_mw": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "grid.egon_etrago_bus_timeseries": {
+      "v_mag_pu_set": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "grid.egon_etrago_generator_timeseries": {
+      "p_max_pu": {
         "custom_time_series": {
           "description": "Time series length validation"
         }
@@ -57,10 +108,31 @@
         }
       }
     },
-    "grid.egon_etrago_bus": {
-      "carrier": {
-        "null_check": {
-          "equal_to": 0
+    "grid.egon_etrago_link_timeseries": {
+      "p_min_pu": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "grid.egon_etrago_storage_timeseries": {
+      "inflow": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "grid.egon_etrago_store_timeseries": {
+      "e_min_pu": {
+        "custom_time_series": {
+          "description": "Time series length validation"
+        }
+      }
+    },
+    "grid.egon_etrago_transformer_timeseries": {
+      "s_max_pu": {
+        "custom_time_series": {
+          "description": "Time series length validation"
         }
       }
     }
@@ -68,8 +140,8 @@
   "sql_table_checks": {},
   "custom_checks": [],
   "metadata": {
-    "generated_at": "2025-07-09T13:25:23.664367",
-    "total_validations": 10,
+    "generated_at": "2025-07-14T11:52:04.439386",
+    "total_validations": 20,
     "source_configurations": [
       "comprehensive",
       "critical_only",

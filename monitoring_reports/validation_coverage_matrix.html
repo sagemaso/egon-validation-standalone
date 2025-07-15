@@ -99,30 +99,30 @@
 <body>
     <div class="header">
         <h1>🔍 eGon Data Validation Coverage Matrix</h1>
-        <p>Generated: 2025-07-09 13:25:23</p>
+        <p>Generated: 2025-07-14 11:52:04</p>
     </div>
 
     <div class="stats">
         <div class="stat-box">
-            <div class="stat-number">7/198</div>
+            <div class="stat-number">18/198</div>
             <div class="stat-label">Tables with Validation</div>
         </div>
         <div class="stat-box">
-            <div class="stat-number">10/2167</div>
+            <div class="stat-number">20/2167</div>
             <div class="stat-label">Columns with Validation</div>
         </div>
         <div class="stat-box">
-            <div class="stat-number">0.5%</div>
+            <div class="stat-number">0.9%</div>
             <div class="stat-label">Coverage</div>
         </div>
         <div class="stat-box">
-            <div class="stat-number">2</div>
+            <div class="stat-number">3</div>
             <div class="stat-label">Validation Types</div>
         </div>
     </div>
 
     <div class="uncovered-tables">
-        <h3>⚠️ Tables without Validation (191 tables)</h3>
+        <h3>⚠️ Tables without Validation (180 tables)</h3>
         <p>The following tables are not covered by any validation configuration:</p>
         <ul>
             <li>boundaries.egon_map_grid_districts_bus_ids</li>
@@ -152,16 +152,12 @@
             <li>demand.egon_demandregio_cts_ind</li>
             <li>demand.egon_demandregio_osm_ind_electricity</li>
             <li>demand.egon_demandregio_sites_ind_electricity</li>
-            <li>demand.egon_demandregio_sites_ind_electricity_dsm_timeseries</li>
-            <li>demand.egon_demandregio_timeseries_cts_ind</li>
             <li>demand.egon_demandregio_wz</li>
             <li>demand.egon_demandregio_zensus_electricity</li>
             <li>demand.egon_district_heating_areas</li>
             <li>demand.egon_etrago_electricity_cts</li>
-            <li>demand.egon_etrago_electricity_cts_dsm_timeseries</li>
             <li>demand.egon_etrago_electricity_households</li>
             <li>demand.egon_etrago_heat_cts</li>
-            <li>demand.egon_etrago_timeseries_individual_heating</li>
             <li>demand.egon_ev_count_municipality</li>
             <li>demand.egon_ev_count_mv_grid_district</li>
             <li>demand.egon_ev_count_registration_district</li>
@@ -170,7 +166,6 @@
             <li>demand.egon_ev_pool</li>
             <li>demand.egon_ev_trip</li>
             <li>demand.egon_heat_idp_pool</li>
-            <li>demand.egon_heat_timeseries_selected_profiles</li>
             <li>demand.egon_heavy_duty_transport_voronoi</li>
             <li>demand.egon_hotmaps_industrial_sites</li>
             <li>demand.egon_household_electricity_profile_in_census_cell</li>
@@ -181,21 +176,18 @@
             <li>demand.egon_map_zensus_district_heating_areas</li>
             <li>demand.egon_osm_ind_load_curves</li>
             <li>demand.egon_osm_ind_load_curves_individual</li>
-            <li>demand.egon_osm_ind_load_curves_individual_dsm_timeseries</li>
             <li>demand.egon_peta_heat</li>
             <li>demand.egon_schmidt_industrial_sites</li>
             <li>demand.egon_seenergies_industrial_sites</li>
             <li>demand.egon_sites_ind_load_curves</li>
             <li>demand.egon_sites_ind_load_curves_individual</li>
-            <li>demand.egon_sites_ind_load_curves_individual_dsm_timeseries</li>
-            <li>demand.egon_timeseries_district_heating</li>
             <li>demand.iee_household_load_profiles</li>
             <li>grid.egon_ehv_substation</li>
             <li>grid.egon_ehv_substation_voronoi</li>
             <li>grid.egon_ehv_transfer_buses</li>
             <li>grid.egon_emob_charging_infrastructure</li>
             <li>grid.egon_etrago_ac_h2</li>
-            <li>grid.egon_etrago_bus_timeseries</li>
+            <li>grid.egon_etrago_bus</li>
             <li>grid.egon_etrago_carrier</li>
             <li>grid.egon_etrago_ch4_h2</li>
             <li>grid.egon_etrago_extension_bus</li>
@@ -208,12 +200,9 @@
             <li>grid.egon_etrago_link</li>
             <li>grid.egon_etrago_load</li>
             <li>grid.egon_etrago_storage</li>
-            <li>grid.egon_etrago_storage_timeseries</li>
             <li>grid.egon_etrago_store</li>
-            <li>grid.egon_etrago_store_timeseries</li>
             <li>grid.egon_etrago_temp_resolution</li>
             <li>grid.egon_etrago_transformer</li>
-            <li>grid.egon_etrago_transformer_timeseries</li>
             <li>grid.egon_gas_voronoi</li>
             <li>grid.egon_hvmv_substation</li>
             <li>grid.egon_hvmv_substation.point</li>
@@ -328,6 +317,7 @@
                     <th>Table</th>
                     <th>Columns</th>
                     <th>Rows (~)</th>
+                    <th>NanCheckRule</th>
                     <th>NullCheckRule</th>
                     <th>TimeSeriesValidationRule</th>
                 </tr>
@@ -340,11 +330,13 @@
                     <td>26,096</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_map_mvgriddistrict_vg250</td>
                     <td>2</td>
                     <td>3,854</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -354,11 +346,13 @@
                     <td>28,070,300</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_map_zensus_buildings_filtered_all</td>
                     <td>3</td>
                     <td>31,528,732</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -368,11 +362,13 @@
                     <td>27,478,528</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_map_zensus_climate_zones</td>
                     <td>2</td>
                     <td>3,170,621</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -382,11 +378,13 @@
                     <td>35,718,584</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_map_zensus_mvgd_buildings</td>
                     <td>7</td>
                     <td>22,340,562</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -396,11 +394,13 @@
                     <td>35,736,812</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_map_zensus_weather_cell</td>
                     <td>2</td>
                     <td>35,785,840</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -410,11 +410,13 @@
                     <td>315</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>vg250_gem</td>
                     <td>28</td>
                     <td>11,135</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -424,11 +426,13 @@
                     <td>12,013</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>vg250_gem_population</td>
                     <td>33</td>
                     <td>11,135</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -438,11 +442,13 @@
                     <td>431</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>vg250_lan</td>
                     <td>28</td>
                     <td>35</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -452,6 +458,7 @@
                     <td>20</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>vg250_sta</td>
@@ -459,11 +466,13 @@
                     <td>11</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>vg250_vwg</td>
                     <td>28</td>
                     <td>4,688</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -474,11 +483,13 @@
                     <td>44,683,620</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_building_heat_peak_loads</td>
                     <td>4</td>
                     <td>42,128,820</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -488,11 +499,13 @@
                     <td>1,963,028</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_cts_heat_demand_building_share</td>
                     <td>4</td>
                     <td>1,963,028</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -502,6 +515,7 @@
                     <td>5,475</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_demandregio_cts_ind</td>
@@ -509,18 +523,21 @@
                     <td>103,458</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_demandregio_hh</td>
                     <td>5</td>
                     <td>7,218</td>
-                    <td class="covered">✅<br><small>(3 cols)</small></td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
+                    <td class="covered">✅<br><small>(2 cols)</small></td>
                     <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_demandregio_osm_ind_electricity</td>
                     <td>5</td>
                     <td>1,310,004</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -530,6 +547,7 @@
                     <td>2,175</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_demandregio_sites_ind_electricity_dsm_timeseries</td>
@@ -537,6 +555,7 @@
                     <td>472</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>egon_demandregio_timeseries_cts_ind</td>
@@ -544,11 +563,13 @@
                     <td>88</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>egon_demandregio_wz</td>
                     <td>3</td>
                     <td>87</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -558,11 +579,13 @@
                     <td>7,355,160</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_district_heating_areas</td>
                     <td>5</td>
                     <td>6,335</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -572,6 +595,7 @@
                     <td>7,554</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_electricity_cts_dsm_timeseries</td>
@@ -579,11 +603,13 @@
                     <td>7,554</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>egon_etrago_electricity_households</td>
                     <td>4</td>
                     <td>7,674</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -593,6 +619,7 @@
                     <td>7,550</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_timeseries_individual_heating</td>
@@ -600,11 +627,13 @@
                     <td>11,538</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>egon_ev_count_municipality</td>
                     <td>10</td>
                     <td>44,012</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -614,11 +643,13 @@
                     <td>15,348</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_ev_count_registration_district</td>
                     <td>10</td>
                     <td>1,600</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -628,11 +659,13 @@
                     <td>2</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_ev_mv_grid_district</td>
                     <td>5</td>
                     <td>125,609,552</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -642,11 +675,13 @@
                     <td>65,376</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_ev_trip</td>
                     <td>17</td>
                     <td>108,342,192</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -656,6 +691,7 @@
                     <td>459,535</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_heat_timeseries_selected_profiles</td>
@@ -663,11 +699,13 @@
                     <td>20,606,560</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>egon_heavy_duty_transport_voronoi</td>
                     <td>7</td>
                     <td>802</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -677,11 +715,13 @@
                     <td>692</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_household_electricity_profile_in_census_cell</td>
                     <td>7</td>
                     <td>3,177,723</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -691,11 +731,13 @@
                     <td>38,605,220</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_hp_capacity_buildings</td>
                     <td>3</td>
                     <td>1,287,354</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -705,11 +747,13 @@
                     <td>725</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_loadarea</td>
                     <td>46</td>
                     <td>218,098</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -719,11 +763,13 @@
                     <td>270,955</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_osm_ind_load_curves</td>
                     <td>3</td>
                     <td>9,816</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -733,6 +779,7 @@
                     <td>61,269</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_osm_ind_load_curves_individual_dsm_timeseries</td>
@@ -740,11 +787,13 @@
                     <td>61,269</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>egon_peta_heat</td>
                     <td>5</td>
                     <td>6,836,426</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -754,11 +803,13 @@
                     <td>236</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_seenergies_industrial_sites</td>
                     <td>29</td>
                     <td>338</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -768,11 +819,13 @@
                     <td>1,608</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_sites_ind_load_curves_individual</td>
                     <td>8</td>
                     <td>2,166</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -782,6 +835,7 @@
                     <td>606</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>egon_timeseries_district_heating</td>
@@ -789,11 +843,13 @@
                     <td>6,335</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>iee_household_load_profiles</td>
                     <td>3</td>
                     <td>100,000</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -804,11 +860,13 @@
                     <td>437</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_ehv_substation_voronoi</td>
                     <td>3</td>
                     <td>437</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -818,11 +876,13 @@
                     <td>454</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_emob_charging_infrastructure</td>
                     <td>5</td>
                     <td>3,998,841</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -832,12 +892,14 @@
                     <td>218</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_bus</td>
                     <td>12</td>
                     <td>85,710</td>
-                    <td class="covered">✅<br><small>(1 cols)</small></td>
+                    <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
                 <tr>
@@ -846,11 +908,13 @@
                     <td>-1</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>egon_etrago_carrier</td>
                     <td>5</td>
                     <td>46</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -860,11 +924,13 @@
                     <td>619</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_extension_bus</td>
                     <td>12</td>
                     <td>152</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -874,11 +940,13 @@
                     <td>880</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_extension_link</td>
                     <td>22</td>
                     <td>22</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -888,6 +956,7 @@
                     <td>152</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_generator</td>
@@ -895,11 +964,13 @@
                     <td>40,577</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_generator_timeseries</td>
                     <td>8</td>
                     <td>28,651</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
@@ -909,6 +980,7 @@
                     <td>-1</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_line</td>
@@ -916,11 +988,13 @@
                     <td>69,901</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_line_timeseries</td>
                     <td>4</td>
                     <td>69,714</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
@@ -930,11 +1004,13 @@
                     <td>83,980</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_link_timeseries</td>
                     <td>8</td>
                     <td>25,729</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
@@ -944,11 +1020,13 @@
                     <td>44,091</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_load_timeseries</td>
                     <td>5</td>
                     <td>44,013</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                     <td class="not-covered">❌</td>
                     <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
@@ -958,6 +1036,7 @@
                     <td>13,044</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_storage_timeseries</td>
@@ -965,11 +1044,13 @@
                     <td>9</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>egon_etrago_store</td>
                     <td>21</td>
                     <td>26,520</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -979,11 +1060,13 @@
                     <td>15,281</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>egon_etrago_temp_resolution</td>
                     <td>4</td>
                     <td>1</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -993,6 +1076,7 @@
                     <td>1,545</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_etrago_transformer_timeseries</td>
@@ -1000,11 +1084,13 @@
                     <td>-1</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                 </tr>
                 <tr>
                     <td>egon_gas_voronoi</td>
                     <td>4</td>
                     <td>2,908</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1014,11 +1100,13 @@
                     <td>3,854</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>point</td>
                     <td>2</td>
                     <td>-1</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1028,11 +1116,13 @@
                     <td>3,854</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_hvmv_transfer_buses</td>
                     <td>16</td>
                     <td>3,976</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1042,11 +1132,13 @@
                     <td>3,854</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_saltstructures_storage_potential</td>
                     <td>9</td>
                     <td>225</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1057,11 +1149,13 @@
                     <td>76</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>dependency_graph</td>
                     <td>2</td>
                     <td>254</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1072,11 +1166,13 @@
                     <td>990,572</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_amenities_in_buildings_filtered</td>
                     <td>9</td>
                     <td>618,445</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1086,11 +1182,13 @@
                     <td>79,928</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_amenities_not_in_buildings_filtered</td>
                     <td>6</td>
                     <td>81,870</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1100,11 +1198,13 @@
                     <td>700,315</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_buildings</td>
                     <td>9</td>
                     <td>34,328,484</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1114,11 +1214,13 @@
                     <td>31,619,904</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_buildings_filtered_with_amenities</td>
                     <td>6</td>
                     <td>466,495</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1128,11 +1230,13 @@
                     <td>30,708,222</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_buildings_synthetic</td>
                     <td>7</td>
                     <td>706,911</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1142,11 +1246,13 @@
                     <td>621,385</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_buildings_without_amenities</td>
                     <td>9</td>
                     <td>31,168,056</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1156,11 +1262,13 @@
                     <td>712,608</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_line</td>
                     <td>79</td>
                     <td>17,209,092</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1170,11 +1278,13 @@
                     <td>355,786,048</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_point</td>
                     <td>73</td>
                     <td>14,452,625</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1184,11 +1294,13 @@
                     <td>41,381,304</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_rels</td>
                     <td>6</td>
                     <td>722,430</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1198,6 +1310,7 @@
                     <td>1,291,529</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_ways</td>
@@ -1205,11 +1318,13 @@
                     <td>58,143,620</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_ways_with_segments</td>
                     <td>5</td>
                     <td>6,716,196</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1220,11 +1335,13 @@
                     <td>23,754</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>bus_data</td>
                     <td>20</td>
                     <td>13,127</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1234,11 +1351,13 @@
                     <td>17</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>results_metadata</td>
                     <td>6</td>
                     <td>1</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1249,11 +1368,13 @@
                     <td>-1</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>abstr_values</td>
                     <td>4</td>
                     <td>6</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1263,11 +1384,13 @@
                     <td>23,754</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>branch_specifications</td>
                     <td>11</td>
                     <td>6</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1277,11 +1400,13 @@
                     <td>13,127</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>dcline_data</td>
                     <td>18</td>
                     <td>-1</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1291,11 +1416,13 @@
                     <td>2</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>debug</td>
                     <td>8</td>
                     <td>264</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1305,11 +1432,13 @@
                     <td>3,644</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>nodes</td>
                     <td>7</td>
                     <td>355,929,984</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1319,11 +1448,13 @@
                     <td>1,951</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>osm_metadata</td>
                     <td>2</td>
                     <td>-1</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1333,11 +1464,13 @@
                     <td>8,690</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>power_circ_members</td>
                     <td>12</td>
                     <td>18,318</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1347,11 +1480,13 @@
                     <td>2,423</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>power_line</td>
                     <td>25</td>
                     <td>22,168</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1361,11 +1496,13 @@
                     <td>7,852</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>power_relations</td>
                     <td>11</td>
                     <td>3,644</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1375,11 +1512,13 @@
                     <td>4,464</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>power_ways</td>
                     <td>13</td>
                     <td>226,078</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1389,11 +1528,13 @@
                     <td>5,497</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>relation_members</td>
                     <td>5</td>
                     <td>15,896,951</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1403,11 +1544,13 @@
                     <td>722,430</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>schema_info</td>
                     <td>1</td>
                     <td>1</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1417,11 +1560,13 @@
                     <td>8,500</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>transfer_busses</td>
                     <td>3</td>
                     <td>4,095</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1431,11 +1576,13 @@
                     <td>4,095</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>transfer_busses_connect</td>
                     <td>3</td>
                     <td>-1</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1445,11 +1592,13 @@
                     <td>482</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>transformer_specifications</td>
                     <td>5</td>
                     <td>3</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1459,6 +1608,7 @@
                     <td>1</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>way_nodes</td>
@@ -1466,11 +1616,13 @@
                     <td>481,698,624</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>ways</td>
                     <td>7</td>
                     <td>58,167,960</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1481,12 +1633,14 @@
                     <td>3</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td rowspan="11" class="schema-header">society</td>
                     <td>destatis_zensus_population_per_ha</td>
                     <td>7</td>
                     <td>35,783,888</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1496,11 +1650,13 @@
                     <td>3,177,723</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_demandregio_household</td>
                     <td>4</td>
                     <td>9,624</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1510,11 +1666,13 @@
                     <td>1,604</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_destatis_zensus_apartment_building_population_per_ha</td>
                     <td>7</td>
                     <td>3,206,490</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1524,11 +1682,13 @@
                     <td>51,089,248</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_destatis_zensus_building_per_ha</td>
                     <td>9</td>
                     <td>24,295,324</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1538,11 +1698,13 @@
                     <td>18,787,904</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_destatis_zensus_household_per_ha_refined</td>
                     <td>9</td>
                     <td>13,304,814</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1552,11 +1714,13 @@
                     <td>5,319,490</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_population_prognosis</td>
                     <td>3</td>
                     <td>6,354,404</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1567,11 +1731,13 @@
                     <td>40,197</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_district_heating</td>
                     <td>7</td>
                     <td>9,090</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1581,11 +1747,13 @@
                     <td>6,102</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_era5_weather_cells</td>
                     <td>3</td>
                     <td>29,673</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1595,11 +1763,13 @@
                     <td>6,880,106</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_individual_heating</td>
                     <td>7</td>
                     <td>7,692</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1609,11 +1779,13 @@
                     <td>7,338</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_mastr_geocoded</td>
                     <td>6</td>
                     <td>15,237</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1623,11 +1795,13 @@
                     <td>737</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_power_plants</td>
                     <td>10</td>
                     <td>34,928</td>
+                    <td class="covered">✅<br><small>(1 cols)</small></td>
                     <td class="covered">✅<br><small>(2 cols)</small></td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1637,11 +1811,13 @@
                     <td>20,710</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_power_plants_combustion</td>
                     <td>21</td>
                     <td>75,072</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1651,11 +1827,13 @@
                     <td>418</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_power_plants_hydro</td>
                     <td>18</td>
                     <td>8,435</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1665,11 +1843,13 @@
                     <td>3</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_power_plants_pv</td>
                     <td>26</td>
                     <td>2,249,381</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1679,11 +1859,13 @@
                     <td>14,005,579</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_power_plants_storage</td>
                     <td>20</td>
                     <td>334,952</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1693,11 +1875,13 @@
                     <td>28,851</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_re_potential_area_pv_agriculture</td>
                     <td>2</td>
                     <td>8,259</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1707,11 +1891,13 @@
                     <td>5,159</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_re_potential_area_wind</td>
                     <td>2</td>
                     <td>120,268</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>
@@ -1721,11 +1907,13 @@
                     <td>236</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
+                    <td class="not-covered">❌</td>
                 </tr>
                 <tr>
                     <td>egon_storages</td>
                     <td>9</td>
                     <td>7,748</td>
+                    <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                     <td class="not-covered">❌</td>
                 </tr>

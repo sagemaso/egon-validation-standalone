@@ -1,18 +1,29 @@
 {
-  "analysis_timestamp": "2025-07-09T13:25:23.660566",
+  "analysis_timestamp": "2025-07-14T11:52:04.435789",
   "total_discovered_tables": 198,
-  "covered_tables": 7,
-  "uncovered_tables": 191,
+  "covered_tables": 18,
+  "uncovered_tables": 180,
   "total_columns": 2167,
-  "covered_columns": 10,
-  "coverage_percentage": 0.46146746654360865,
+  "covered_columns": 20,
+  "coverage_percentage": 0.9229349330872173,
   "covered_table_list": [
     "demand.egon_demandregio_hh",
-    "grid.egon_etrago_bus",
+    "demand.egon_demandregio_sites_ind_electricity_dsm_timeseries",
+    "demand.egon_demandregio_timeseries_cts_ind",
+    "demand.egon_etrago_electricity_cts_dsm_timeseries",
+    "demand.egon_etrago_timeseries_individual_heating",
+    "demand.egon_heat_timeseries_selected_profiles",
+    "demand.egon_osm_ind_load_curves_individual_dsm_timeseries",
+    "demand.egon_sites_ind_load_curves_individual_dsm_timeseries",
+    "demand.egon_timeseries_district_heating",
+    "grid.egon_etrago_bus_timeseries",
     "grid.egon_etrago_generator_timeseries",
     "grid.egon_etrago_line_timeseries",
     "grid.egon_etrago_link_timeseries",
     "grid.egon_etrago_load_timeseries",
+    "grid.egon_etrago_storage_timeseries",
+    "grid.egon_etrago_store_timeseries",
+    "grid.egon_etrago_transformer_timeseries",
     "supply.egon_power_plants"
   ],
   "uncovered_table_list": [
@@ -43,16 +54,12 @@
     "demand.egon_demandregio_cts_ind",
     "demand.egon_demandregio_osm_ind_electricity",
     "demand.egon_demandregio_sites_ind_electricity",
-    "demand.egon_demandregio_sites_ind_electricity_dsm_timeseries",
-    "demand.egon_demandregio_timeseries_cts_ind",
     "demand.egon_demandregio_wz",
     "demand.egon_demandregio_zensus_electricity",
     "demand.egon_district_heating_areas",
     "demand.egon_etrago_electricity_cts",
-    "demand.egon_etrago_electricity_cts_dsm_timeseries",
     "demand.egon_etrago_electricity_households",
     "demand.egon_etrago_heat_cts",
-    "demand.egon_etrago_timeseries_individual_heating",
     "demand.egon_ev_count_municipality",
     "demand.egon_ev_count_mv_grid_district",
     "demand.egon_ev_count_registration_district",
@@ -61,7 +68,6 @@
     "demand.egon_ev_pool",
     "demand.egon_ev_trip",
     "demand.egon_heat_idp_pool",
-    "demand.egon_heat_timeseries_selected_profiles",
     "demand.egon_heavy_duty_transport_voronoi",
     "demand.egon_hotmaps_industrial_sites",
     "demand.egon_household_electricity_profile_in_census_cell",
@@ -72,21 +78,18 @@
     "demand.egon_map_zensus_district_heating_areas",
     "demand.egon_osm_ind_load_curves",
     "demand.egon_osm_ind_load_curves_individual",
-    "demand.egon_osm_ind_load_curves_individual_dsm_timeseries",
     "demand.egon_peta_heat",
     "demand.egon_schmidt_industrial_sites",
     "demand.egon_seenergies_industrial_sites",
     "demand.egon_sites_ind_load_curves",
     "demand.egon_sites_ind_load_curves_individual",
-    "demand.egon_sites_ind_load_curves_individual_dsm_timeseries",
-    "demand.egon_timeseries_district_heating",
     "demand.iee_household_load_profiles",
     "grid.egon_ehv_substation",
     "grid.egon_ehv_substation_voronoi",
     "grid.egon_ehv_transfer_buses",
     "grid.egon_emob_charging_infrastructure",
     "grid.egon_etrago_ac_h2",
-    "grid.egon_etrago_bus_timeseries",
+    "grid.egon_etrago_bus",
     "grid.egon_etrago_carrier",
     "grid.egon_etrago_ch4_h2",
     "grid.egon_etrago_extension_bus",
@@ -99,12 +102,9 @@
     "grid.egon_etrago_link",
     "grid.egon_etrago_load",
     "grid.egon_etrago_storage",
-    "grid.egon_etrago_storage_timeseries",
     "grid.egon_etrago_store",
-    "grid.egon_etrago_store_timeseries",
     "grid.egon_etrago_temp_resolution",
     "grid.egon_etrago_transformer",
-    "grid.egon_etrago_transformer_timeseries",
     "grid.egon_gas_voronoi",
     "grid.egon_hvmv_substation",
     "grid.egon_hvmv_substation.point",
@@ -213,13 +213,11 @@
       "table": "demand.egon_demandregio_hh",
       "column": "demand",
       "validation_types": [
+        "NanCheckRule",
         "NullCheckRule"
       ],
       "configurations": [
-        "comprehensive",
-        "critical_only",
-        "null_checks_only",
-        "quick_check"
+        "comprehensive"
       ]
     },
     {
@@ -229,20 +227,18 @@
         "NullCheckRule"
       ],
       "configurations": [
-        "comprehensive",
-        "null_checks_only"
+        "comprehensive"
       ]
     },
     {
       "table": "supply.egon_power_plants",
       "column": "el_capacity",
       "validation_types": [
+        "NanCheckRule",
         "NullCheckRule"
       ],
       "configurations": [
-        "comprehensive",
-        "critical_only",
-        "null_checks_only"
+        "comprehensive"
       ]
     },
     {
@@ -252,20 +248,108 @@
         "NullCheckRule"
       ],
       "configurations": [
-        "comprehensive",
-        "null_checks_only"
+        "comprehensive"
       ]
     },
     {
       "table": "grid.egon_etrago_load_timeseries",
       "column": "p_set",
       "validation_types": [
+        "NanCheckRule",
         "TimeSeriesValidationRule"
       ],
       "configurations": [
-        "comprehensive",
-        "critical_only",
-        "time_series_only"
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "demand.egon_demandregio_sites_ind_electricity_dsm_timeseries",
+      "column": "p_mset",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "demand.egon_demandregio_timeseries_cts_ind",
+      "column": "load_curve",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "demand.egon_etrago_electricity_cts_dsm_timeseries",
+      "column": "p_set",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "demand.egon_etrago_timeseries_individual_heating",
+      "column": "dist_aggregated_mw",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "demand.egon_heat_timeseries_selected_profiles",
+      "column": "selected_idp_profiles",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "demand.egon_osm_ind_load_curves_individual_dsm_timeseries",
+      "column": "p_set",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "demand.egon_sites_ind_load_curves_individual_dsm_timeseries",
+      "column": "p_set",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "demand.egon_timeseries_district_heating",
+      "column": "dist_aggregated_mw",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "grid.egon_etrago_bus_timeseries",
+      "column": "v_mag_pu_set",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
       ]
     },
     {
@@ -275,19 +359,7 @@
         "TimeSeriesValidationRule"
       ],
       "configurations": [
-        "comprehensive",
-        "time_series_only"
-      ]
-    },
-    {
-      "table": "grid.egon_etrago_link_timeseries",
-      "column": "p_min_pu",
-      "validation_types": [
-        "TimeSeriesValidationRule"
-      ],
-      "configurations": [
-        "comprehensive",
-        "time_series_only"
+        "comprehensive"
       ]
     },
     {
@@ -297,27 +369,47 @@
         "TimeSeriesValidationRule"
       ],
       "configurations": [
-        "time_series_only"
+        "comprehensive"
       ]
     },
     {
-      "table": "demand.egon_demandregio_hh",
-      "column": "scenario",
+      "table": "grid.egon_etrago_link_timeseries",
+      "column": "p_min_pu",
       "validation_types": [
-        "NullCheckRule"
+        "TimeSeriesValidationRule"
       ],
       "configurations": [
-        "null_checks_only"
+        "comprehensive"
       ]
     },
     {
-      "table": "grid.egon_etrago_bus",
-      "column": "carrier",
+      "table": "grid.egon_etrago_storage_timeseries",
+      "column": "inflow",
       "validation_types": [
-        "NullCheckRule"
+        "TimeSeriesValidationRule"
       ],
       "configurations": [
-        "null_checks_only"
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "grid.egon_etrago_store_timeseries",
+      "column": "e_min_pu",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "grid.egon_etrago_transformer_timeseries",
+      "column": "s_max_pu",
+      "validation_types": [
+        "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
       ]
     }
   ]

@@ -166,37 +166,42 @@ class ValidationMonitor:
         if not self.discovered_tables:
             raise ValueError("No tables discovered. Run discover_database_structure() first.")
 
-        # Extract all validations from configurations
+        # Extract validations from comprehensive configuration only
         all_validations = []
         validation_by_table_column = {}
 
-        for config_name, config in VALIDATION_CONFIGURATIONS.items():
-            print(f"\n📋 Analyzing configuration: {config_name}")
+        # Only analyze comprehensive configuration
+        config_name = "comprehensive"
+        if config_name not in VALIDATION_CONFIGURATIONS:
+            raise ValueError(f"Configuration '{config_name}' not found in VALIDATION_CONFIGURATIONS")
+        
+        config = VALIDATION_CONFIGURATIONS[config_name]
+        print(f"\n📋 Analyzing configuration: {config_name}")
 
-            for rule in config["rules"]:
-                rule_name = rule["name"]
-                rule_class = rule["rule_class"].__name__
+        for rule in config["rules"]:
+            rule_name = rule["name"]
+            rule_class = rule["rule_class"].__name__
 
-                # Handle list of table/column configs
-                if isinstance(rule["config"], list):
-                    for item in rule["config"]:
-                        table = item["table"]
-                        column = item["column"]
+            # Handle list of table/column configs
+            if isinstance(rule["config"], list):
+                for item in rule["config"]:
+                    table = item["table"]
+                    column = item["column"]
 
-                        key = f"{table}.{column}"
+                    key = f"{table}.{column}"
 
-                        if key not in validation_by_table_column:
-                            validation_by_table_column[key] = {
-                                "table": table,
-                                "column": column,
-                                "validation_types": set(),
-                                "configurations": set()
-                            }
+                    if key not in validation_by_table_column:
+                        validation_by_table_column[key] = {
+                            "table": table,
+                            "column": column,
+                            "validation_types": set(),
+                            "configurations": set()
+                        }
 
-                        validation_by_table_column[key]["validation_types"].add(rule_class)
-                        validation_by_table_column[key]["configurations"].add(config_name)
+                    validation_by_table_column[key]["validation_types"].add(rule_class)
+                    validation_by_table_column[key]["configurations"].add(config_name)
 
-                        print(f"   ✅ {table}.{column} → {rule_class}")
+                    print(f"   ✅ {table}.{column} → {rule_class}")
 
         # Convert to ValidationCoverage objects
         self.validation_coverage = []
