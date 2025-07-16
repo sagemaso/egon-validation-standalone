@@ -10,6 +10,11 @@
         "null_check": {
           "equal_to": 0
         }
+      },
+      "scenario": {
+        "null_check": {
+          "equal_to": 0
+        }
       }
     },
     "supply.egon_power_plants": {
@@ -18,6 +23,13 @@
           "equal_to": 0
         }
       },
+      "carrier": {
+        "null_check": {
+          "equal_to": 0
+        }
+      }
+    },
+    "grid.egon_etrago_bus": {
       "carrier": {
         "null_check": {
           "equal_to": 0
@@ -140,8 +152,8 @@
   "sql_table_checks": {},
   "custom_checks": [],
   "metadata": {
-    "generated_at": "2025-07-14T11:52:04.439386",
-    "total_validations": 20,
+    "generated_at": "2025-07-16T10:48:23.858309",
+    "total_validations": 22,
     "source_configurations": [
       "comprehensive",
       "critical_only",

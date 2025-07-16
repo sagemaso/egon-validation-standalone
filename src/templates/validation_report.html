@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>eGon Data Validation Coverage Matrix</title>
+    <link rel="stylesheet" href="validation_report.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 eGon Data Validation Coverage Matrix</h1>
+        <p>Generated: {generation_timestamp}</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-box">
+            <div class="stat-number">{covered_tables}/{total_tables}</div>
+            <div class="stat-label">Tables with Validation</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">{covered_columns}/{total_columns}</div>
+            <div class="stat-label">Columns with Validation</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">{coverage_percentage:.1f}%</div>
+            <div class="stat-label">Coverage</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">{validation_types_count}</div>
+            <div class="stat-label">Validation Types</div>
+        </div>
+    </div>
+
+    {uncovered_tables_section}
+
+    <div class="matrix-container">
+        <h2>📊 Validation Coverage Matrix</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Schema</th>
+                    <th>Table</th>
+                    <th>Columns</th>
+                    <th>Rows (~)</th>
+                    {validation_type_headers}
+                </tr>
+            </thead>
+            <tbody>
+                {table_rows}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="summary">
+        <h3>📋 Configuration Details</h3>
+        <p>Available validation configurations:</p>
+        <ul>
+            {configuration_list}
+        </ul>
+    </div>
+
+    <script src="validation_report.js"></script>
+</body>
+</html>

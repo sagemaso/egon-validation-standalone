@@ -1,11 +1,11 @@
 {
-  "analysis_timestamp": "2025-07-14T11:52:04.435789",
+  "analysis_timestamp": "2025-07-16T10:48:23.854053",
   "total_discovered_tables": 198,
-  "covered_tables": 18,
-  "uncovered_tables": 180,
+  "covered_tables": 19,
+  "uncovered_tables": 179,
   "total_columns": 2167,
-  "covered_columns": 20,
-  "coverage_percentage": 0.9229349330872173,
+  "covered_columns": 22,
+  "coverage_percentage": 1.015228426395939,
   "covered_table_list": [
     "demand.egon_demandregio_hh",
     "demand.egon_demandregio_sites_ind_electricity_dsm_timeseries",
@@ -16,6 +16,7 @@
     "demand.egon_osm_ind_load_curves_individual_dsm_timeseries",
     "demand.egon_sites_ind_load_curves_individual_dsm_timeseries",
     "demand.egon_timeseries_district_heating",
+    "grid.egon_etrago_bus",
     "grid.egon_etrago_bus_timeseries",
     "grid.egon_etrago_generator_timeseries",
     "grid.egon_etrago_line_timeseries",
@@ -89,7 +90,6 @@
     "grid.egon_ehv_transfer_buses",
     "grid.egon_emob_charging_infrastructure",
     "grid.egon_etrago_ac_h2",
-    "grid.egon_etrago_bus",
     "grid.egon_etrago_carrier",
     "grid.egon_etrago_ch4_h2",
     "grid.egon_etrago_extension_bus",
@@ -231,6 +231,16 @@
       ]
     },
     {
+      "table": "demand.egon_demandregio_hh",
+      "column": "scenario",
+      "validation_types": [
+        "NullCheckRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
       "table": "supply.egon_power_plants",
       "column": "el_capacity",
       "validation_types": [
@@ -243,6 +253,16 @@
     },
     {
       "table": "supply.egon_power_plants",
+      "column": "carrier",
+      "validation_types": [
+        "NullCheckRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "grid.egon_etrago_bus",
       "column": "carrier",
       "validation_types": [
         "NullCheckRule"
