@@ -154,6 +154,34 @@ class ValidationMonitor:
             self.logger.critical(f"Database structure discovery failed: {str(e)}")
             raise
 
+    def _get_display_name(self, validation_type: str) -> str:
+        """
+        Convert full validation class names to shorter, more readable display names
+        
+        Parameters:
+        -----------
+        validation_type : str
+            Full class name (e.g., "EtragoElectricitySanityRule")
+            
+        Returns:
+        --------
+        str : Shortened display name with line breaks
+        """
+        # Mapping of full class names to shorter display names
+        display_names = {
+            "NullCheckRule": "Null<br>Check",
+            "NanCheckRule": "NaN<br>Check", 
+            "TimeSeriesValidationRule": "Time<br>Series",
+            "EtragoElectricitySanityRule": "Etrago<br>Electricity<br>Sanity",
+            "EtragoHeatSanityRule": "Etrago<br>Heat<br>Sanity",
+            "ResidentialElectricityAnnualSumRule": "Residential<br>Electricity<br>Annual",
+            "ResidentialElectricityHhRefinementRule": "Residential<br>Household<br>Refinement",
+            "CtsElectricityDemandShareRule": "CTS<br>Electricity<br>Demand",
+            "CtsHeatDemandShareRule": "CTS<br>Heat<br>Demand"
+        }
+        
+        return display_names.get(validation_type, validation_type.replace("Rule", "").replace("Validation", ""))
+
     def analyze_validation_coverage(self) -> Dict[str, Any]:
         """
         Analyze which tables/columns are covered by validation configurations
@@ -331,8 +359,11 @@ class ValidationMonitor:
         # Build validation type headers
         validation_type_headers = ""
         for validation_type in all_validation_types:
+            # Create shorter display name for better readability
+            display_name = self._get_display_name(validation_type)
             validation_type_headers += template_loader.render_partial("validation_type_header.html", {
-                "validation_type": validation_type
+                "validation_type": validation_type,
+                "validation_type_display": display_name
             })
 
         # Build table rows
