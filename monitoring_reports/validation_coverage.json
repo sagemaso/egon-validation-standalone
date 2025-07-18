@@ -1,15 +1,18 @@
 {
-  "analysis_timestamp": "2025-07-16T10:48:23.854053",
+  "analysis_timestamp": "2025-07-18T12:40:25.731001",
   "total_discovered_tables": 198,
-  "covered_tables": 19,
-  "uncovered_tables": 179,
+  "covered_tables": 25,
+  "uncovered_tables": 173,
   "total_columns": 2167,
-  "covered_columns": 22,
-  "coverage_percentage": 1.015228426395939,
+  "covered_columns": 28,
+  "coverage_percentage": 1.2921089063221043,
   "covered_table_list": [
+    "demand.egon_cts_electricity_demand_building_share",
+    "demand.egon_cts_heat_demand_building_share",
     "demand.egon_demandregio_hh",
     "demand.egon_demandregio_sites_ind_electricity_dsm_timeseries",
     "demand.egon_demandregio_timeseries_cts_ind",
+    "demand.egon_demandregio_zensus_electricity",
     "demand.egon_etrago_electricity_cts_dsm_timeseries",
     "demand.egon_etrago_timeseries_individual_heating",
     "demand.egon_heat_timeseries_selected_profiles",
@@ -18,13 +21,16 @@
     "demand.egon_timeseries_district_heating",
     "grid.egon_etrago_bus",
     "grid.egon_etrago_bus_timeseries",
+    "grid.egon_etrago_generator",
     "grid.egon_etrago_generator_timeseries",
     "grid.egon_etrago_line_timeseries",
     "grid.egon_etrago_link_timeseries",
+    "grid.egon_etrago_load",
     "grid.egon_etrago_load_timeseries",
     "grid.egon_etrago_storage_timeseries",
     "grid.egon_etrago_store_timeseries",
     "grid.egon_etrago_transformer_timeseries",
+    "society.egon_destatis_zensus_household_per_ha_refined",
     "supply.egon_power_plants"
   ],
   "uncovered_table_list": [
@@ -49,14 +55,11 @@
     "boundaries.vg250_vwg",
     "demand.egon_building_electricity_peak_loads",
     "demand.egon_building_heat_peak_loads",
-    "demand.egon_cts_electricity_demand_building_share",
-    "demand.egon_cts_heat_demand_building_share",
     "demand.egon_daily_heat_demand_per_climate_zone",
     "demand.egon_demandregio_cts_ind",
     "demand.egon_demandregio_osm_ind_electricity",
     "demand.egon_demandregio_sites_ind_electricity",
     "demand.egon_demandregio_wz",
-    "demand.egon_demandregio_zensus_electricity",
     "demand.egon_district_heating_areas",
     "demand.egon_etrago_electricity_cts",
     "demand.egon_etrago_electricity_households",
@@ -96,11 +99,9 @@
     "grid.egon_etrago_extension_line",
     "grid.egon_etrago_extension_link",
     "grid.egon_etrago_extension_transformer",
-    "grid.egon_etrago_generator",
     "grid.egon_etrago_hv_busmap",
     "grid.egon_etrago_line",
     "grid.egon_etrago_link",
-    "grid.egon_etrago_load",
     "grid.egon_etrago_storage",
     "grid.egon_etrago_store",
     "grid.egon_etrago_temp_resolution",
@@ -181,7 +182,6 @@
     "society.egon_destatis_zensus_apartment_per_ha",
     "society.egon_destatis_zensus_building_per_ha",
     "society.egon_destatis_zensus_household_per_ha",
-    "society.egon_destatis_zensus_household_per_ha_refined",
     "society.egon_household_prognosis",
     "society.egon_population_prognosis",
     "supply.egon_chp_plants",
@@ -427,6 +427,66 @@
       "column": "s_max_pu",
       "validation_types": [
         "TimeSeriesValidationRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "grid.egon_etrago_generator",
+      "column": "p_nom",
+      "validation_types": [
+        "EtragoElectricitySanityRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "grid.egon_etrago_load",
+      "column": "p_set",
+      "validation_types": [
+        "EtragoHeatSanityRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "demand.egon_demandregio_zensus_electricity",
+      "column": "demand",
+      "validation_types": [
+        "ResidentialElectricityAnnualSumRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "society.egon_destatis_zensus_household_per_ha_refined",
+      "column": "hh_10types",
+      "validation_types": [
+        "ResidentialElectricityHhRefinementRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "demand.egon_cts_electricity_demand_building_share",
+      "column": "profile_share",
+      "validation_types": [
+        "CtsElectricityDemandShareRule"
+      ],
+      "configurations": [
+        "comprehensive"
+      ]
+    },
+    {
+      "table": "demand.egon_cts_heat_demand_building_share",
+      "column": "profile_share",
+      "validation_types": [
+        "CtsHeatDemandShareRule"
       ],
       "configurations": [
         "comprehensive"

@@ -46,7 +46,9 @@ class TemplateLoader:
     
     def copy_css_to_output(self, css_filename: str, output_dir: str) -> str:
         """Copy CSS file to output directory"""
-        css_source = self.template_dir / css_filename
+        # CSS files are now in src/static/css/
+        current_dir = Path(__file__).parent
+        css_source = current_dir.parent / "static" / "css" / css_filename
         css_dest = Path(output_dir) / css_filename
         
         if not css_source.exists():
@@ -64,7 +66,9 @@ class TemplateLoader:
     
     def copy_js_to_output(self, js_filename: str, output_dir: str) -> str:
         """Copy JavaScript file to output directory"""
-        js_source = self.template_dir / js_filename
+        # JavaScript files are now in src/static/js/
+        current_dir = Path(__file__).parent
+        js_source = current_dir.parent / "static" / "js" / js_filename
         js_dest = Path(output_dir) / js_filename
         
         if not js_source.exists():

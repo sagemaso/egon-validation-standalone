@@ -1,6 +1,12 @@
 from src.rules.formal.null_check_rule import NullCheckRule
 from src.rules.formal.nan_check_rule import NanCheckRule
 from src.rules.formal.time_series_rule import TimeSeriesValidationRule
+from src.rules.sanity.etrago_electricity_sanity_rule import EtragoElectricitySanityRule
+from src.rules.sanity.etrago_heat_sanity_rule import EtragoHeatSanityRule
+from src.rules.sanity.residential_electricity_annual_sum_rule import ResidentialElectricityAnnualSumRule
+from src.rules.sanity.residential_electricity_hh_refinement_rule import ResidentialElectricityHhRefinementRule
+from src.rules.sanity.cts_electricity_demand_share_rule import CtsElectricityDemandShareRule
+from src.rules.sanity.cts_heat_demand_share_rule import CtsHeatDemandShareRule
 
 # ==========================
 # VALIDATION CONFIGURATIONS
@@ -53,6 +59,65 @@ VALIDATION_CONFIGURATIONS = {
                     {"table": "grid.egon_etrago_store_timeseries", "column": "e_min_pu", "expected_length": 8760},
                     {"table": "grid.egon_etrago_transformer_timeseries", "column": "s_max_pu", "expected_length": 8760},
                 ]
+            },
+            {
+                "name": "etrago_electricity_sanity",
+                "rule_class": EtragoElectricitySanityRule,
+                "config": {
+                    "scenario": "eGon2035",
+                    "tolerance": 5.0,
+                    "table": "grid.egon_etrago_generator",
+                    "column": "p_nom"
+                }
+            },
+            {
+                "name": "etrago_heat_sanity",
+                "rule_class": EtragoHeatSanityRule,
+                "config": {
+                    "scenario": "eGon2035",
+                    "tolerance": 5.0,
+                    "table": "grid.egon_etrago_load",
+                    "column": "p_set"
+                }
+            },
+            {
+                "name": "residential_electricity_annual_sum",
+                "rule_class": ResidentialElectricityAnnualSumRule,
+                "config": {
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "tolerance": 1e-5,
+                    "table": "demand.egon_demandregio_zensus_electricity",
+                    "column": "demand"
+                }
+            },
+            {
+                "name": "residential_electricity_hh_refinement",
+                "rule_class": ResidentialElectricityHhRefinementRule,
+                "config": {
+                    "tolerance": 1e-5,
+                    "table": "society.egon_destatis_zensus_household_per_ha_refined",
+                    "column": "hh_10types"
+                }
+            },
+            {
+                "name": "cts_electricity_demand_share",
+                "rule_class": CtsElectricityDemandShareRule,
+                "config": {
+                    "tolerance": 1e-5,
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "table": "demand.egon_cts_electricity_demand_building_share",
+                    "column": "profile_share"
+                }
+            },
+            {
+                "name": "cts_heat_demand_share",
+                "rule_class": CtsHeatDemandShareRule,
+                "config": {
+                    "tolerance": 1e-5,
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "table": "demand.egon_cts_heat_demand_building_share",
+                    "column": "profile_share"
+                }
             }
         ]
     },
@@ -121,6 +186,71 @@ VALIDATION_CONFIGURATIONS = {
                 "config": [
                     {"table": "demand.egon_demandregio_hh", "column": "demand"}
                 ]
+            }
+        ]
+    },
+
+    "sanity_checks": {
+        "description": "Sanity checks for data consistency and business logic",
+        "rules": [
+            {
+                "name": "etrago_electricity_sanity",
+                "rule_class": EtragoElectricitySanityRule,
+                "config": {
+                    "scenario": "eGon2035",
+                    "tolerance": 5.0,
+                    "table": "grid.egon_etrago_generator",
+                    "column": "p_nom"
+                }
+            },
+            {
+                "name": "etrago_heat_sanity",
+                "rule_class": EtragoHeatSanityRule,
+                "config": {
+                    "scenario": "eGon2035",
+                    "tolerance": 5.0,
+                    "table": "grid.egon_etrago_load",
+                    "column": "p_set"
+                }
+            },
+            {
+                "name": "residential_electricity_annual_sum",
+                "rule_class": ResidentialElectricityAnnualSumRule,
+                "config": {
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "tolerance": 1e-5,
+                    "table": "demand.egon_demandregio_zensus_electricity",
+                    "column": "demand"
+                }
+            },
+            {
+                "name": "residential_electricity_hh_refinement",
+                "rule_class": ResidentialElectricityHhRefinementRule,
+                "config": {
+                    "tolerance": 1e-5,
+                    "table": "society.egon_destatis_zensus_household_per_ha_refined",
+                    "column": "hh_10types"
+                }
+            },
+            {
+                "name": "cts_electricity_demand_share",
+                "rule_class": CtsElectricityDemandShareRule,
+                "config": {
+                    "tolerance": 1e-5,
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "table": "demand.egon_cts_electricity_demand_building_share",
+                    "column": "profile_share"
+                }
+            },
+            {
+                "name": "cts_heat_demand_share",
+                "rule_class": CtsHeatDemandShareRule,
+                "config": {
+                    "tolerance": 1e-5,
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "table": "demand.egon_cts_heat_demand_building_share",
+                    "column": "profile_share"
+                }
             }
         ]
     }

@@ -147,19 +147,26 @@
           "description": "Time series length validation"
         }
       }
-    }
+    },
+    "grid.egon_etrago_generator": {},
+    "grid.egon_etrago_load": {},
+    "demand.egon_demandregio_zensus_electricity": {},
+    "society.egon_destatis_zensus_household_per_ha_refined": {},
+    "demand.egon_cts_electricity_demand_building_share": {},
+    "demand.egon_cts_heat_demand_building_share": {}
   },
   "sql_table_checks": {},
   "custom_checks": [],
   "metadata": {
-    "generated_at": "2025-07-16T10:48:23.858309",
-    "total_validations": 22,
+    "generated_at": "2025-07-18T12:40:25.734819",
+    "total_validations": 28,
     "source_configurations": [
       "comprehensive",
       "critical_only",
       "time_series_only",
       "null_checks_only",
-      "quick_check"
+      "quick_check",
+      "sanity_checks"
     ]
   }
 }

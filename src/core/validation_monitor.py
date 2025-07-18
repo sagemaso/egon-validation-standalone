@@ -183,7 +183,7 @@ class ValidationMonitor:
             rule_name = rule["name"]
             rule_class = rule["rule_class"].__name__
 
-            # Handle list of table/column configs
+            # Handle list of table/column configs (e.g., NullCheckRule, TimeSeriesValidationRule)
             if isinstance(rule["config"], list):
                 for item in rule["config"]:
                     table = item["table"]
@@ -203,6 +203,29 @@ class ValidationMonitor:
                     validation_by_table_column[key]["configurations"].add(config_name)
 
                     print(f"   ✅ {table}.{column} → {rule_class}")
+            
+            # Handle single table/column configs (e.g., sanity rules)
+            elif isinstance(rule["config"], dict) and "table" in rule["config"] and "column" in rule["config"]:
+                table = rule["config"]["table"]
+                column = rule["config"]["column"]
+
+                key = f"{table}.{column}"
+
+                if key not in validation_by_table_column:
+                    validation_by_table_column[key] = {
+                        "table": table,
+                        "column": column,
+                        "validation_types": set(),
+                        "configurations": set()
+                    }
+
+                validation_by_table_column[key]["validation_types"].add(rule_class)
+                validation_by_table_column[key]["configurations"].add(config_name)
+
+                print(f"   ✅ {table}.{column} → {rule_class}")
+            
+            else:
+                print(f"   ⚠️  Skipping {rule_name} - no table/column info found in config")
 
         # Convert to ValidationCoverage objects
         self.validation_coverage = []
