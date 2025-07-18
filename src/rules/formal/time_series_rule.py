@@ -27,7 +27,6 @@ class TimeSeriesValidationRule(BatchValidationRule):
             COUNT(CASE WHEN cardinality({column}) != {expected_length} THEN 1 END) as wrong_length,
             array_agg(DISTINCT cardinality({column})) as found_lengths
         FROM {table}
-        LIMIT 1000
         """
 
         try:

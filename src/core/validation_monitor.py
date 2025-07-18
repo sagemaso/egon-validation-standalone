@@ -7,6 +7,7 @@ import json
 from src.core.database_manager import DatabaseManager
 from src.core.validation_logger import ValidationLogger
 from src.config.validation_config import VALIDATION_CONFIGURATIONS
+from src.utils.template_loader import TemplateLoader
 
 
 @dataclass
@@ -153,6 +154,34 @@ class ValidationMonitor:
             self.logger.critical(f"Database structure discovery failed: {str(e)}")
             raise
 
+    def _get_display_name(self, validation_type: str) -> str:
+        """
+        Convert full validation class names to shorter, more readable display names
+        
+        Parameters:
+        -----------
+        validation_type : str
+            Full class name (e.g., "EtragoElectricitySanityRule")
+            
+        Returns:
+        --------
+        str : Shortened display name with line breaks
+        """
+        # Mapping of full class names to shorter display names
+        display_names = {
+            "NullCheckRule": "Null<br>Check",
+            "NanCheckRule": "NaN<br>Check", 
+            "TimeSeriesValidationRule": "Time<br>Series",
+            "EtragoElectricitySanityRule": "Etrago<br>Electricity<br>Sanity",
+            "EtragoHeatSanityRule": "Etrago<br>Heat<br>Sanity",
+            "ResidentialElectricityAnnualSumRule": "Residential<br>Electricity<br>Annual",
+            "ResidentialElectricityHhRefinementRule": "Residential<br>Household<br>Refinement",
+            "CtsElectricityDemandShareRule": "CTS<br>Electricity<br>Demand",
+            "CtsHeatDemandShareRule": "CTS<br>Heat<br>Demand"
+        }
+        
+        return display_names.get(validation_type, validation_type.replace("Rule", "").replace("Validation", ""))
+
     def analyze_validation_coverage(self) -> Dict[str, Any]:
         """
         Analyze which tables/columns are covered by validation configurations
@@ -166,37 +195,65 @@ class ValidationMonitor:
         if not self.discovered_tables:
             raise ValueError("No tables discovered. Run discover_database_structure() first.")
 
-        # Extract all validations from configurations
+        # Extract validations from comprehensive configuration only
         all_validations = []
         validation_by_table_column = {}
 
-        for config_name, config in VALIDATION_CONFIGURATIONS.items():
-            print(f"\n📋 Analyzing configuration: {config_name}")
+        # Only analyze comprehensive configuration
+        config_name = "comprehensive"
+        if config_name not in VALIDATION_CONFIGURATIONS:
+            raise ValueError(f"Configuration '{config_name}' not found in VALIDATION_CONFIGURATIONS")
+        
+        config = VALIDATION_CONFIGURATIONS[config_name]
+        print(f"\n📋 Analyzing configuration: {config_name}")
 
-            for rule in config["rules"]:
-                rule_name = rule["name"]
-                rule_class = rule["rule_class"].__name__
+        for rule in config["rules"]:
+            rule_name = rule["name"]
+            rule_class = rule["rule_class"].__name__
 
-                # Handle list of table/column configs
-                if isinstance(rule["config"], list):
-                    for item in rule["config"]:
-                        table = item["table"]
-                        column = item["column"]
+            # Handle list of table/column configs (e.g., NullCheckRule, TimeSeriesValidationRule)
+            if isinstance(rule["config"], list):
+                for item in rule["config"]:
+                    table = item["table"]
+                    column = item["column"]
 
-                        key = f"{table}.{column}"
+                    key = f"{table}.{column}"
 
-                        if key not in validation_by_table_column:
-                            validation_by_table_column[key] = {
-                                "table": table,
-                                "column": column,
-                                "validation_types": set(),
-                                "configurations": set()
-                            }
+                    if key not in validation_by_table_column:
+                        validation_by_table_column[key] = {
+                            "table": table,
+                            "column": column,
+                            "validation_types": set(),
+                            "configurations": set()
+                        }
 
-                        validation_by_table_column[key]["validation_types"].add(rule_class)
-                        validation_by_table_column[key]["configurations"].add(config_name)
+                    validation_by_table_column[key]["validation_types"].add(rule_class)
+                    validation_by_table_column[key]["configurations"].add(config_name)
 
-                        print(f"   ✅ {table}.{column} → {rule_class}")
+                    print(f"   ✅ {table}.{column} → {rule_class}")
+            
+            # Handle single table/column configs (e.g., sanity rules)
+            elif isinstance(rule["config"], dict) and "table" in rule["config"] and "column" in rule["config"]:
+                table = rule["config"]["table"]
+                column = rule["config"]["column"]
+
+                key = f"{table}.{column}"
+
+                if key not in validation_by_table_column:
+                    validation_by_table_column[key] = {
+                        "table": table,
+                        "column": column,
+                        "validation_types": set(),
+                        "configurations": set()
+                    }
+
+                validation_by_table_column[key]["validation_types"].add(rule_class)
+                validation_by_table_column[key]["configurations"].add(config_name)
+
+                print(f"   ✅ {table}.{column} → {rule_class}")
+            
+            else:
+                print(f"   ⚠️  Skipping {rule_name} - no table/column info found in config")
 
         # Convert to ValidationCoverage objects
         self.validation_coverage = []
@@ -244,7 +301,7 @@ class ValidationMonitor:
 
     def generate_coverage_matrix_html(self, output_path: str = "validation_coverage_matrix.html") -> str:
         """
-        Generate HTML coverage matrix report
+        Generate HTML coverage matrix report using template system
 
         Parameters:
         -----------
@@ -261,127 +318,18 @@ class ValidationMonitor:
             raise ValueError(
                 "No data available. Run discover_database_structure() and analyze_validation_coverage() first.")
 
-        # Prepare data for matrix
-        coverage_dict = {}
-        for c in self.validation_coverage:
-            coverage_dict[f"{c.table}.{c.column}"] = {
-                "validation_types": c.validation_types,
-                "configurations": c.configurations
-            }
+        # Initialize template loader
+        template_loader = TemplateLoader()
+        
+        # Copy CSS and JavaScript files to output directory
+        import os
+        output_dir = os.path.dirname(output_path)
+        if not output_dir:
+            output_dir = "."
+        template_loader.copy_css_to_output("validation_report.css", output_dir)
+        template_loader.copy_js_to_output("validation_report.js", output_dir)
 
-        # Get all validation types
-        all_validation_types = set()
-        for c in self.validation_coverage:
-            all_validation_types.update(c.validation_types)
-        all_validation_types = sorted(list(all_validation_types))
-
-        # Build HTML
-        html_content = f"""
-<!DOCTYPE html>
-<html>
-<head>
-    <title>eGon Data Validation Coverage Matrix</title>
-    <style>
-        body {{
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f5f5f5;
-        }}
-        .header {{
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }}
-        .summary {{
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }}
-        .matrix-container {{
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            overflow-x: auto;
-        }}
-        table {{
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }}
-        th, td {{
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }}
-        th {{
-            background-color: #34495e;
-            color: white;
-            font-weight: bold;
-        }}
-        .schema-header {{
-            background-color: #3498db;
-            color: white;
-            font-weight: bold;
-        }}
-        .covered {{
-            background-color: #d4edda;
-            text-align: center;
-        }}
-        .not-covered {{
-            background-color: #f8d7da;
-            text-align: center;
-        }}
-        .validation-type {{
-            background-color: #e8f5e8;
-            font-size: 0.8em;
-            padding: 2px 6px;
-            border-radius: 3px;
-            margin: 1px;
-            display: inline-block;
-        }}
-        .uncovered-tables {{
-            background-color: #fff3cd;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }}
-        .stats {{
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }}
-        .stat-box {{
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            flex: 1;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }}
-        .stat-number {{
-            font-size: 2em;
-            font-weight: bold;
-            color: #2c3e50;
-        }}
-        .stat-label {{
-            color: #7f8c8d;
-            font-size: 0.9em;
-        }}
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>🔍 eGon Data Validation Coverage Matrix</h1>
-        <p>Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
-    </div>
-"""
-
-        # Add statistics
+        # Prepare data for template
         covered_tables = set(c.table for c in self.validation_coverage)
         total_discovered_tables = set(t.table for t in self.discovered_tables)
         uncovered_tables = total_discovered_tables - covered_tables
@@ -389,40 +337,36 @@ class ValidationMonitor:
         covered_columns = len(self.validation_coverage)
         coverage_percentage = (covered_columns / total_columns * 100) if total_columns > 0 else 0
 
-        html_content += f"""
-    <div class="stats">
-        <div class="stat-box">
-            <div class="stat-number">{len(covered_tables)}/{len(total_discovered_tables)}</div>
-            <div class="stat-label">Tables with Validation</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-number">{covered_columns}/{total_columns}</div>
-            <div class="stat-label">Columns with Validation</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-number">{coverage_percentage:.1f}%</div>
-            <div class="stat-label">Coverage</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-number">{len(all_validation_types)}</div>
-            <div class="stat-label">Validation Types</div>
-        </div>
-    </div>
-"""
+        # Get all validation types
+        all_validation_types = set()
+        for c in self.validation_coverage:
+            all_validation_types.update(c.validation_types)
+        all_validation_types = sorted(list(all_validation_types))
 
-        # Add uncovered tables warning
+        # Build uncovered tables section
+        uncovered_tables_section = ""
         if uncovered_tables:
-            html_content += f"""
-    <div class="uncovered-tables">
-        <h3>⚠️ Tables without Validation ({len(uncovered_tables)} tables)</h3>
-        <p>The following tables are not covered by any validation configuration:</p>
-        <ul>
-"""
+            # Build table list using partials
+            table_list = ""
             for table in sorted(uncovered_tables):
-                html_content += f"            <li>{table}</li>\n"
-            html_content += "        </ul>\n    </div>\n"
+                table_list += template_loader.render_partial("table_list_item.html", {"table_name": table})
+            
+            uncovered_tables_section = template_loader.render_partial("uncovered_tables_section.html", {
+                "uncovered_count": len(uncovered_tables),
+                "table_list": table_list
+            })
 
-        # Group tables by schema
+        # Build validation type headers
+        validation_type_headers = ""
+        for validation_type in all_validation_types:
+            # Create shorter display name for better readability
+            display_name = self._get_display_name(validation_type)
+            validation_type_headers += template_loader.render_partial("validation_type_header.html", {
+                "validation_type": validation_type,
+                "validation_type_display": display_name
+            })
+
+        # Build table rows
         tables_by_schema = {}
         for table_info in self.discovered_tables:
             schema = table_info.schema
@@ -430,41 +374,20 @@ class ValidationMonitor:
                 tables_by_schema[schema] = []
             tables_by_schema[schema].append(table_info)
 
-        # Coverage matrix
-        html_content += f"""
-    <div class="matrix-container">
-        <h2>📊 Validation Coverage Matrix</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Schema</th>
-                    <th>Table</th>
-                    <th>Columns</th>
-                    <th>Rows (~)</th>
-"""
-
-        for validation_type in all_validation_types:
-            html_content += f"                    <th>{validation_type}</th>\n"
-
-        html_content += "                </tr>\n            </thead>\n            <tbody>\n"
-
-        # Add table rows
+        table_rows = ""
         for schema in sorted(tables_by_schema.keys()):
             schema_tables = tables_by_schema[schema]
             first_table = True
 
             for table_info in sorted(schema_tables, key=lambda x: x.table):
-                html_content += "                <tr>\n"
-
                 # Schema column (only for first table in schema)
+                schema_cell = ""
                 if first_table:
-                    html_content += f'                    <td rowspan="{len(schema_tables)}" class="schema-header">{schema}</td>\n'
+                    schema_cell = template_loader.render_partial("schema_cell.html", {
+                        "rowspan": len(schema_tables),
+                        "schema": schema
+                    })
                     first_table = False
-
-                # Table info
-                html_content += f"                    <td>{table_info.table.split('.')[-1]}</td>\n"
-                html_content += f"                    <td>{table_info.column_count}</td>\n"
-                html_content += f"                    <td>{table_info.estimated_row_count:,}</td>\n"
 
                 # Validation coverage columns
                 table_validations = {}
@@ -475,32 +398,54 @@ class ValidationMonitor:
                                 table_validations[val_type] = []
                             table_validations[val_type].append(c.column)
 
+                validation_columns = ""
                 for validation_type in all_validation_types:
                     if validation_type in table_validations:
                         columns = table_validations[validation_type]
-                        html_content += f'                    <td class="covered">✅<br><small>({len(columns)} cols)</small></td>\n'
+                        column_names = ", ".join(columns)
+                        column_names_display = "<br>".join([f"• {col}" for col in columns])
+                        validation_columns += template_loader.render_partial("covered_cell.html", {
+                            "column_count": len(columns),
+                            "column_names": column_names,
+                            "column_names_display": column_names_display
+                        })
                     else:
-                        html_content += f'                    <td class="not-covered">❌</td>\n'
+                        validation_columns += template_loader.render_partial("not_covered_cell.html", {})
 
-                html_content += "                </tr>\n"
+                # Render complete table row
+                table_rows += template_loader.render_partial("table_row.html", {
+                    "schema_cell": schema_cell,
+                    "table_name": table_info.table.split('.')[-1],
+                    "column_count": table_info.column_count,
+                    "estimated_row_count": table_info.estimated_row_count,
+                    "validation_columns": validation_columns
+                })
 
-        html_content += """            </tbody>
-        </table>
-    </div>
-
-    <div class="summary">
-        <h3>📋 Configuration Details</h3>
-        <p>Available validation configurations:</p>
-        <ul>
-"""
-
+        # Build configuration list
+        configuration_list = ""
         for config_name, config in VALIDATION_CONFIGURATIONS.items():
-            html_content += f"            <li><strong>{config_name}</strong>: {config.get('description', 'No description')}</li>\n"
+            configuration_list += template_loader.render_partial("configuration_list_item.html", {
+                "config_name": config_name,
+                "description": config.get('description', 'No description')
+            })
 
-        html_content += """        </ul>
-    </div>
-</body>
-</html>"""
+        # Prepare template context
+        context = {
+            "generation_timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            "covered_tables": len(covered_tables),
+            "total_tables": len(total_discovered_tables),
+            "covered_columns": covered_columns,
+            "total_columns": total_columns,
+            "coverage_percentage": coverage_percentage,
+            "validation_types_count": len(all_validation_types),
+            "uncovered_tables_section": uncovered_tables_section,
+            "validation_type_headers": validation_type_headers,
+            "table_rows": table_rows,
+            "configuration_list": configuration_list
+        }
+
+        # Render template
+        html_content = template_loader.render_template("validation_report.html", context)
 
         # Write to file
         with open(output_path, 'w', encoding='utf-8') as f:
