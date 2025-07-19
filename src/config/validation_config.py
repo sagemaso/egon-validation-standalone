@@ -7,6 +7,12 @@ from src.rules.sanity.residential_electricity_annual_sum_rule import Residential
 from src.rules.sanity.residential_electricity_hh_refinement_rule import ResidentialElectricityHhRefinementRule
 from src.rules.sanity.cts_electricity_demand_share_rule import CtsElectricityDemandShareRule
 from src.rules.sanity.cts_heat_demand_share_rule import CtsHeatDemandShareRule
+from src.rules.sanity.emobility_sanity_rule import EmobilitySanityRule
+from src.rules.sanity.pv_rooftop_buildings_sanity_rule import PvRooftopBuildingsSanityRule
+from src.rules.sanity.home_batteries_sanity_rule import HomeBatteriesSanityRule
+from src.rules.sanity.gas_de_sanity_rule import GasDeSanityRule
+from src.rules.sanity.gas_abroad_sanity_rule import GasAbroadSanityRule
+from src.rules.sanity.dsm_sanity_rule import DsmSanityRule
 
 # ==========================
 # VALIDATION CONFIGURATIONS
@@ -117,6 +123,66 @@ VALIDATION_CONFIGURATIONS = {
                     "scenarios": ["eGon2035", "eGon100RE"],
                     "table": "demand.egon_cts_heat_demand_building_share",
                     "column": "profile_share"
+                }
+            },
+            {
+                "name": "emobility_sanity",
+                "rule_class": EmobilitySanityRule,
+                "config": {
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "tolerance": 0.0001,
+                    "table": "emobility.*",
+                    "column": "ev_data"
+                }
+            },
+            {
+                "name": "pv_rooftop_buildings_sanity",
+                "rule_class": PvRooftopBuildingsSanityRule,
+                "config": {
+                    "scenarios": ["status_quo", "eGon2035", "eGon100RE"],
+                    "tolerance": 1e-02,
+                    "table": "supply.egon_power_plants_pv_roof_building",
+                    "column": "capacity"
+                }
+            },
+            {
+                "name": "home_batteries_sanity",
+                "rule_class": HomeBatteriesSanityRule,
+                "config": {
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "tolerance": 1e-6,
+                    "table": "storage.egon_storages_home_batteries",
+                    "column": "el_capacity"
+                }
+            },
+            {
+                "name": "gas_de_sanity",
+                "rule_class": GasDeSanityRule,
+                "config": {
+                    "scenario": "eGon2035",
+                    "tolerance": 5.0,
+                    "table": "grid.egon_etrago_*",
+                    "column": "gas_data"
+                }
+            },
+            {
+                "name": "gas_abroad_sanity",
+                "rule_class": GasAbroadSanityRule,
+                "config": {
+                    "scenario": "eGon2035",
+                    "tolerance": 5.0,
+                    "table": "grid.egon_etrago_*",
+                    "column": "gas_data_abroad"
+                }
+            },
+            {
+                "name": "dsm_sanity",
+                "rule_class": DsmSanityRule,
+                "config": {
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "tolerance": 1e-01,
+                    "table": "grid.egon_etrago_link,grid.egon_etrago_store",
+                    "column": "dsm_data"
                 }
             }
         ]
@@ -250,6 +316,66 @@ VALIDATION_CONFIGURATIONS = {
                     "scenarios": ["eGon2035", "eGon100RE"],
                     "table": "demand.egon_cts_heat_demand_building_share",
                     "column": "profile_share"
+                }
+            },
+            {
+                "name": "emobility_sanity",
+                "rule_class": EmobilitySanityRule,
+                "config": {
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "tolerance": 0.0001,
+                    "table": "emobility.*",
+                    "column": "ev_data"
+                }
+            },
+            {
+                "name": "pv_rooftop_buildings_sanity",
+                "rule_class": PvRooftopBuildingsSanityRule,
+                "config": {
+                    "scenarios": ["status_quo", "eGon2035", "eGon100RE"],
+                    "tolerance": 1e-02,
+                    "table": "supply.egon_power_plants_pv_roof_building",
+                    "column": "capacity"
+                }
+            },
+            {
+                "name": "home_batteries_sanity",
+                "rule_class": HomeBatteriesSanityRule,
+                "config": {
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "tolerance": 1e-6,
+                    "table": "storage.egon_storages_home_batteries",
+                    "column": "el_capacity"
+                }
+            },
+            {
+                "name": "gas_de_sanity",
+                "rule_class": GasDeSanityRule,
+                "config": {
+                    "scenario": "eGon2035",
+                    "tolerance": 5.0,
+                    "table": "grid.egon_etrago_*",
+                    "column": "gas_data"
+                }
+            },
+            {
+                "name": "gas_abroad_sanity",
+                "rule_class": GasAbroadSanityRule,
+                "config": {
+                    "scenario": "eGon2035",
+                    "tolerance": 5.0,
+                    "table": "grid.egon_etrago_*",
+                    "column": "gas_data_abroad"
+                }
+            },
+            {
+                "name": "dsm_sanity",
+                "rule_class": DsmSanityRule,
+                "config": {
+                    "scenarios": ["eGon2035", "eGon100RE"],
+                    "tolerance": 1e-01,
+                    "table": "grid.egon_etrago_link,grid.egon_etrago_store",
+                    "column": "dsm_data"
                 }
             }
         ]
